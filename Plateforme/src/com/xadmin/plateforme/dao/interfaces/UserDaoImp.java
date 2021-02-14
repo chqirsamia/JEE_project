@@ -23,7 +23,7 @@ public class UserDaoImp implements UserDao{
         Connection connection = daoFactory.getConnection();
 
         if(user.getEmail() != null) {
-            sql = "SELECT `id`, `nom`, `prenom`, `email`, `sexe`, `password`"+
+            sql = "SELECT `id`, `nom`, `prenom`, `email`, `sexe`,`tel`, `password`"+
                     "FROM `users` WHERE email = ? ";
             preparedStmt = connection.prepareStatement(sql);
             preparedStmt.setString(1,user.getEmail());
@@ -37,6 +37,7 @@ public class UserDaoImp implements UserDao{
             returnedUser.setPrenom(resultset.getString("prenom"));
             returnedUser.setEmail(resultset.getString("email"));
             returnedUser.setSexe(resultset.getString("sexe"));
+            returnedUser.setTel(resultset.getString("tel"));
             returnedUser.setPassword(resultset.getString("password"));
         } else {
             returnedUser = null;
@@ -55,12 +56,12 @@ public class UserDaoImp implements UserDao{
         ResultSet resultset;
         Connection connection = daoFactory.getConnection();
         List<User> listofUsers = new ArrayList<User>();
-        sql = "SELECT id, nom, prenom, email,sexe" +
+        sql = "SELECT id, nom, prenom, email,sexe,tel" +
                 "FROM users";
         stmt = connection.createStatement();
         resultset = stmt.executeQuery(sql);
         int id;
-        String nom, prenom, email,sexe,password;
+        String nom, prenom, email,sexe,tel,password;
         User usertoAdd;
 
         while( resultset.next() ) {
@@ -70,7 +71,8 @@ public class UserDaoImp implements UserDao{
             email = resultset.getString("email");
             password = resultset.getString("password");
             sexe = resultset.getString("sexe");
-            usertoAdd = new User(id,nom,prenom,email,sexe,password);
+            tel = resultset.getString("tel");
+            usertoAdd = new User(id,nom,prenom,email,sexe,tel,password);
             listofUsers.add(usertoAdd);
         }
 
@@ -87,14 +89,15 @@ public class UserDaoImp implements UserDao{
         PreparedStatement preparedStmt = null;
         ResultSet resultset = null;
         Connection connection = daoFactory.getConnection();
-        sql = "INSERT INTO `users`(nom,prenom,email,sexe,password) " +
-                "VALUES (?,?,?,?,?)";
+        sql = "INSERT INTO `users`(nom,prenom,email,sexe,tel,password) " +
+                "VALUES (?,?,?,?,?,?)";
         preparedStmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         preparedStmt.setString(1, user.getNom());
         preparedStmt.setString(2, user.getPrenom());
         preparedStmt.setString(3, user.getEmail());
         preparedStmt.setString(4, user.getSexe());
-        preparedStmt.setString(5, user.getPassword());
+        preparedStmt.setString(5, user.getTel());
+        preparedStmt.setString(6, user.getPassword());
         preparedStmt.execute();
         resultset = preparedStmt.getGeneratedKeys();
         if (resultset.next()) {
@@ -114,13 +117,14 @@ public class UserDaoImp implements UserDao{
         String sql;
         PreparedStatement preparedStmt = null;
         Connection connection = daoFactory.getConnection();
-        sql = "UPDATE users set nom = ? , prenom = ? , email = ? ,sexe= ?, password = ? where ID = ?";
+        sql = "UPDATE users set nom = ? , prenom = ? , email = ? ,sexe= ?,tel= ?, password = ? where ID = ?";
         preparedStmt = connection.prepareStatement(sql);
         preparedStmt.setString(1, user.getNom());
         preparedStmt.setString(2, user.getPrenom());
         preparedStmt.setString(3, user.getEmail());
         preparedStmt.setString(4, user.getSexe());
-        preparedStmt.setString(5, user.getPassword());
+        preparedStmt.setString(5, user.getTel());
+        preparedStmt.setString(6, user.getPassword());
         rowUpdated = preparedStmt.executeUpdate() > 0;
 
         preparedStmt.close();

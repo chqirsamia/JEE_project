@@ -6,9 +6,16 @@ public class User {
     private String prenom;
     private String email;
     private String sexe;
+    private String tel;
     private String password;
     
-    public String getSexe() {
+    public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public String getSexe() {
 		return sexe;
 	}
 	public void setSexe(String sexe) {
@@ -49,22 +56,24 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public User(int id, String nom, String prenom, String email,String sexe, String password) {
+	public User(int id, String nom, String prenom, String email,String sexe, String tel, String password) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.sexe=sexe;
+		this.tel=tel;
 		this.password = password;
 		
 	}
-	public User(String nom, String prenom, String email,String sexe,String password) {
+	public User(String nom, String prenom, String email,String sexe,String tel,String password) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.sexe=sexe;
+		this.tel=tel;
 		this.password = password;
 		
 	}

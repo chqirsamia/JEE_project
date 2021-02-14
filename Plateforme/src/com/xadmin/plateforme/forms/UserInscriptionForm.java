@@ -23,6 +23,7 @@ public class UserInscriptionForm {
     private static final String CHAMP_PRENOM    = "prenom";
     private static final String CHAMP_SEXE   = "sexe";
     private static final String CHAMP_EMAIL = "email";
+    private static final String CHAMP_TEL = "tel";
     private static final String CHAMP_MOT_DE_PASSE     = "motdepasse";
     private static final String CHAMP_CONFIRMATION_MOT_DE_PASSE = "confirmationmotdepasse";
     private static final String CHAMP_ACCEPTE_TERMES = "accepte";
@@ -45,6 +46,7 @@ public class UserInscriptionForm {
             String prenom = getValeurChamp(req, CHAMP_PRENOM);
             String sexe = getValeurChamp(req, CHAMP_SEXE);
             String email = getValeurChamp(req, CHAMP_EMAIL);
+            String tel = getValeurChamp(req, CHAMP_TEL);
             String motDePasse = getValeurChamp(req, CHAMP_MOT_DE_PASSE);
             String confirmation = getValeurChamp(req, CHAMP_CONFIRMATION_MOT_DE_PASSE);
             String accepteTermes = getValeurChamp(req, CHAMP_ACCEPTE_TERMES);
@@ -53,6 +55,7 @@ public class UserInscriptionForm {
             traiterNom(nom, user);
             traiterPrenom(prenom, user);
             traiterEmail(email, user);
+            traiterTel(tel, user);
             traiterMotDePasse(motDePasse, confirmation, user);
             traiterAccepter(accepteTermes);
 
@@ -109,6 +112,15 @@ public class UserInscriptionForm {
             setErreur( CHAMP_EMAIL, e.getMessage() );
         }
         user.setEmail(email);
+    }
+    private void traiterTel(String tel,User user){
+        try {
+            validationTel( tel );
+        } catch ( Exception e ) {
+        	e.printStackTrace();
+            setErreur( CHAMP_TEL, e.getMessage() );
+        }
+        user.setTel(tel);
     }
     private void traiterMotDePasse(String motDePasse , String confirmation,User user){
         try {
@@ -171,6 +183,15 @@ public class UserInscriptionForm {
             }
         } else {
             throw new Exception( "Merci de saisir une adresse mail." );
+        }
+    }
+    private void validationTel(String tel) throws Exception{
+        if ( tel != null) {
+            if ( !tel.matches( "[0]{1}[0-9]{9}" ) ) {
+                throw new Exception( "Merci de saisir un numéro de téléphone valide." );
+            }
+        } else {
+            throw new Exception( "Merci de saisir un numéro de téléphone." );
         }
     }
 

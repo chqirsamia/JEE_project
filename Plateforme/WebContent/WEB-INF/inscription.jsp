@@ -61,6 +61,12 @@ crossorigin="anonymous">
 						
                         <span style="color:red">${form.erreurs['email']}</span>
 					</div>
+					<!--TEL-->
+					<div class="wrap-input100 validate-input" data-validate = "Le format valide: 0xxxxxxxxx">
+						<input class="input100" type="text" value="<c:out value='${user.tel}'/>" name="tel" placeholder="Tel">
+						
+                        <span style="color:red">${form.erreurs['tel']}</span>
+					</div>
                    <!--Sexe-->
                     
                     <div class="mylabel" style="font-weight: bold; margin-left: 50px;"> Sexe: </div>
