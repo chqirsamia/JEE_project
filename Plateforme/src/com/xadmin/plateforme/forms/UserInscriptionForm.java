@@ -24,6 +24,7 @@ public class UserInscriptionForm {
     private static final String CHAMP_SEXE   = "sexe";
     private static final String CHAMP_EMAIL = "email";
     private static final String CHAMP_TEL = "tel";
+    private static final String CHAMP_ROLE = "role";
     private static final String CHAMP_MOT_DE_PASSE     = "motdepasse";
     private static final String CHAMP_CONFIRMATION_MOT_DE_PASSE = "confirmationmotdepasse";
     private static final String CHAMP_ACCEPTE_TERMES = "accepte";
@@ -47,6 +48,7 @@ public class UserInscriptionForm {
             String sexe = getValeurChamp(req, CHAMP_SEXE);
             String email = getValeurChamp(req, CHAMP_EMAIL);
             String tel = getValeurChamp(req, CHAMP_TEL);
+            String role ="client"; 
             String motDePasse = getValeurChamp(req, CHAMP_MOT_DE_PASSE);
             String confirmation = getValeurChamp(req, CHAMP_CONFIRMATION_MOT_DE_PASSE);
             String accepteTermes = getValeurChamp(req, CHAMP_ACCEPTE_TERMES);

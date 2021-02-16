@@ -6,6 +6,7 @@ public class User {
     private String prenom;
     private String email;
     private String sexe;
+    private String role;
     private String tel;
     private String password;
     
@@ -22,7 +23,9 @@ public class User {
 		this.sexe = sexe;
 	}
 	
-
+	public String role() {
+		return role;
+	}
 	public String getPassword() {
 		return password;
 	}
@@ -37,6 +40,9 @@ public class User {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public void setRole(String role) {
+		this.role= role;
 	}
 	public String getNom() {
 		return nom;
@@ -56,7 +62,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public User(int id, String nom, String prenom, String email,String sexe, String tel, String password) {
+	public User(int id, String nom, String prenom, String email,String sexe, String tel, String password, String role) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -65,9 +71,10 @@ public class User {
 		this.sexe=sexe;
 		this.tel=tel;
 		this.password = password;
+		this.role = role;
 		
 	}
-	public User(String nom, String prenom, String email,String sexe,String tel,String password) {
+	public User(String nom, String prenom, String email,String sexe,String tel,String password, String role) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -75,6 +82,7 @@ public class User {
 		this.sexe=sexe;
 		this.tel=tel;
 		this.password = password;
+		this.role=role;
 		
 	}
 
