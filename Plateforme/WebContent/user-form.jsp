@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<title>User Management Application</title>
+<title>HSA</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -15,7 +15,7 @@
 		<nav class="navbar navbar-expand-md navbar-dark"
 			style="background-color: blue">
 			<div>
-				<a href="https://www.xadmin.net" class="navbar-brand"> User Management Application </a>
+				<a href="https://www.xadmin.net" class="navbar-brand"> ajouter admin </a>
 			</div>
 
 			<ul class="navbar-nav">
@@ -51,20 +51,35 @@
 				</c:if>
 
 				<fieldset class="form-group">
-					<label>Nom User</label> <input type="text"
+					<label>Nom </label> <input type="text"
 						value="<c:out value='${user.nom}' />" class="form-control"
 						name="nom" required="required">
 				</fieldset>
 
 				<fieldset class="form-group">
-					<label>Prenom User</label> <input type="text"
+					<label>Prenom</label> <input type="text"
 						value="<c:out value='${user.prenom}' />" class="form-control"
 						name="prenom">
 				</fieldset>
 
 				<fieldset class="form-group">
-					<label>Email User</label> <input type="text"
+					<label>Email</label> <input type="text"
 						value="<c:out value='${user.email}' />" class="form-control"
+						name="email">
+				</fieldset>
+				<fieldset class="form-group">
+					<label>telephone</label> <input type="text"
+						value="<c:out value='${user.tel}' />" class="form-control"
+						name="email">
+				</fieldset>
+				<fieldset class="form-group">
+					<label>sexe</label> <input type="text"
+						value="<c:out value='${user.sexe}' />" class="form-control"
+						name="email">
+				</fieldset>
+				<fieldset class="form-group">
+					<label>password</label> <input type="text"
+						value="<c:out value='${user.password}' />" class="form-control"
 						name="email">
 				</fieldset>
 

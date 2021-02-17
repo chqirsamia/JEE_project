@@ -22,6 +22,7 @@ public class UserAuthForm {
 
     private static final String CHAMP_MOT_DE_PASSE = "motdepasse";
     private static final String CHAMP_EMAIL = "email";
+	private static final String User = null;
 
     private String resultat;
     private Map<String, String> erreurs = new HashMap();
