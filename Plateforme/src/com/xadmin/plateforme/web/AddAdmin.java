@@ -59,9 +59,9 @@ public class AddAdmin extends HttpServlet {
 			case "/delete":
 				deleteUser(request, response);
 				break;
-			/*case "/edit":
+			case "/edit":
 				showEditForm(request, response);
-				break;*/
+				break;
 			case "/update":
 				updateUser(request, response);
 				break;
@@ -88,15 +88,15 @@ public class AddAdmin extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	/*private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		User existingUser = UserDao.selectUser(id);
+		User existingUser = userDao.selectUser(id);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
 		request.setAttribute("user", existingUser);
 		dispatcher.forward(request, response);
 
-	}*/
+	}
 
 	private void insertUserAdmin(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
@@ -122,7 +122,7 @@ public class AddAdmin extends HttpServlet {
 		String sexe =request.getParameter("sexe");
 		String tel = request.getParameter("tel");
 		String password =request.getParameter("password");
-		
+		//String role =request.getParameter("role");
 
 		User Admin = new User(name,prenom, email,sexe, tel,password,"admin");
 		userDao.updateUser(Admin);

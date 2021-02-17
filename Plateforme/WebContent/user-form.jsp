@@ -70,18 +70,19 @@
 				<fieldset class="form-group">
 					<label>telephone</label> <input type="text"
 						value="<c:out value='${user.tel}' />" class="form-control"
-						name="email">
+						name="tel">
 				</fieldset>
 				<fieldset class="form-group">
 					<label>sexe</label> <input type="text"
 						value="<c:out value='${user.sexe}' />" class="form-control"
-						name="email">
+						name="sexe">
 				</fieldset>
 				<fieldset class="form-group">
 					<label>password</label> <input type="text"
 						value="<c:out value='${user.password}' />" class="form-control"
-						name="email">
+						name="password">
 				</fieldset>
+				
 
 				<button type="submit" class="btn btn-success">Save</button>
 				</form>

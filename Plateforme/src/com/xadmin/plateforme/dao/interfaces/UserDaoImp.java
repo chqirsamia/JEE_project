@@ -194,7 +194,7 @@ public class UserDaoImp implements UserDao{
 
         return rowDeleted;
     }
-    public  User selectUser(int id)throws SQLException {
+    public User selectUser(int id)throws SQLException {
 		User user = null;
 		// Step 1: Establishing a Connection
 		Connection connection = daoFactory.getConnection();
