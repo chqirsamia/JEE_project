@@ -124,7 +124,7 @@ public class AddAdmin extends HttpServlet {
 		String password =request.getParameter("password");
 		//String role =request.getParameter("role");
 
-		User Admin = new User(name,prenom, email,sexe, tel,password,"admin");
+		User Admin = new User(id,name,prenom, email,sexe, tel,password,"admin");
 		userDao.updateUser(Admin);
 		response.sendRedirect("list");
 	}

@@ -158,6 +158,7 @@ public class UserDaoImp implements UserDao{
         preparedStmt.setString(4, user.getSexe());
         preparedStmt.setString(5, user.getTel());
         preparedStmt.setString(6, user.getPassword());
+        preparedStmt.setInt(7, user.getId());
         rowUpdated = preparedStmt.executeUpdate() > 0;
 
         preparedStmt.close();
