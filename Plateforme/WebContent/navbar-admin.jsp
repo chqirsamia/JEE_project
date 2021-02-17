@@ -17,22 +17,14 @@
       </li>
       <li class="nav-item "><a></a></li>
       <li class="nav-item ">
-        <a class="nav-link" style="font-size:20px" href="#">Nos offres <span class="sr-only">(current)</span></a>
+        <a class="nav-link" style="font-size:20px" href="#">mes offres <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item "><a></a></li>
       <li class="nav-item ">
-        <a class="nav-link" style="font-size:20px" href="Acceuil.jsp#apropos">À propos<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item "><a></a></li>
-
-      <li class="nav-item ">
-        <a class="nav-link" style="font-size:20px" href="Acceuil.jsp#contact">Contact <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item "><a></a></li>
-      <li class="nav-item ">
-        <a class="nav-link" style="font-size:20px" href="<c:url value='/authentification'/>">Connexion <span class="sr-only">(current)</span></a>
+        <a class="nav-link" style="font-size:20px" href="<c:url value='/user-list'/>">add admin <span class="sr-only">(current)</span></a>
       </li>
       
+
     </ul>
   </div>
 

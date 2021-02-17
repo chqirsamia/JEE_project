@@ -46,7 +46,7 @@
 						<th>Email</th>
 						<th>Telephone</th>
 						<th>sexe</th>
-						
+						<th>mot de passe</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
@@ -60,7 +60,7 @@
 							<td><c:out value="${user.email}" /></td>
 							<td><c:out value="${user.tel}" /></td>
 							<td><c:out value="${user.sexe}" /></td>
-							
+							<td><c:out value="${user.password}" /></td>
 							<td><a href="edit?id=<c:out value='${user.id}' />">Edit</a>
 								&nbsp;&nbsp;&nbsp;&nbsp; <a
 								href="delete?id=<c:out value='${user.id}' />">Delete</a></td>

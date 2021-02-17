@@ -23,9 +23,6 @@ public class User {
 		this.sexe = sexe;
 	}
 	
-	public String role() {
-		return role;
-	}
 	public String getPassword() {
 		return password;
 	}
@@ -37,6 +34,9 @@ public class User {
     }
 	public int getId() {
 		return id;
+	}
+	public String getRole() {
+		return role;
 	}
 	public void setId(int id) {
 		this.id = id;

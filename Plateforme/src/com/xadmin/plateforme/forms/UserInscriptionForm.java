@@ -52,7 +52,7 @@ public class UserInscriptionForm {
             String motDePasse = getValeurChamp(req, CHAMP_MOT_DE_PASSE);
             String confirmation = getValeurChamp(req, CHAMP_CONFIRMATION_MOT_DE_PASSE);
             String accepteTermes = getValeurChamp(req, CHAMP_ACCEPTE_TERMES);
-
+            user.setRole(role);
             user.setSexe(sexe);
             traiterNom(nom, user);
             traiterPrenom(prenom, user);
