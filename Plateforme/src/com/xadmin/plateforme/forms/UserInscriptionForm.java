@@ -58,7 +58,7 @@ public class UserInscriptionForm {
             traiterTel(tel, user);
             traiterMotDePasse(motDePasse, confirmation, user);
             traiterAccepter(accepteTermes);
-
+            user.setRole("C");
             if (erreurs.isEmpty()) {
                 user.setId(userDao.insertUser(user));
                 resultat = "Succés de l'inscription";
