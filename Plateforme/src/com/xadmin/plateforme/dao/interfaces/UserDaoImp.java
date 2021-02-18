@@ -38,7 +38,7 @@ public class UserDaoImp implements UserDao{
             returnedUser.setEmail(resultset.getString("email"));
             returnedUser.setSexe(resultset.getString("sexe"));
             returnedUser.setTel(resultset.getString("tel"));
-            returnedUser.setTel(resultset.getString("role"));
+            returnedUser.setRole(resultset.getString("role"));
             returnedUser.setPassword(resultset.getString("password"));
         } else {
             returnedUser = null;
