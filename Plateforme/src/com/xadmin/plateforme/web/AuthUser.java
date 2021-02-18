@@ -57,8 +57,8 @@ public class AuthUser extends HttpServlet {
             HttpSession session = req.getSession();
             session.setAttribute(ATT_SESSION_USERID,user.getId());
             session.setAttribute(ATT_SESSION_USER,user);
-           System.out.println(user.getRole());
-            if(user.getRole().equals("client")) resp.sendRedirect(VUE_USER_ACCUEIL);
+           String role =user.getRole();
+            if(role.equals("client")) resp.sendRedirect(VUE_USER_ACCUEIL);
             else resp.sendRedirect(VUE_ADMIN_ACCUEIL);
         } else {
             this.getServletContext().getRequestDispatcher(VUE_AUTHENTIFICATION).forward(req, resp);
