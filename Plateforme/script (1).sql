@@ -40,6 +40,7 @@ CREATE TABLE Offre(
         id_offre        Int  Auto_increment  NOT NULL ,
         reduction_offre Float NOT NULL ,
         id         Int NOT NULL
+		description Varchar (1000) NOT NULL ,
 	,CONSTRAINT Offre_PK PRIMARY KEY (id_offre)
 
 	,CONSTRAINT Offre_User_FK FOREIGN KEY (id) REFERENCES User(id)
