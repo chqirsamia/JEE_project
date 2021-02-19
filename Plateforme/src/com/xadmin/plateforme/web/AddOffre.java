@@ -65,7 +65,7 @@ public class AddOffre  extends HttpServlet {
 	private void listOffre(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		List<Offre> listOffre = offreDao.selectAllOffres();
-		request.setAttribute("listOffre", listOffre);
+		request.setAttribute("listOffre",listOffre);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("offre-list.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -94,24 +94,17 @@ public class AddOffre  extends HttpServlet {
 	    int carton_petit;
 	    int carton_grand;
 	    int id;
-	    String type_carton;
 	     float reduction_offre; 
-	     String nom;
-	     String prenom;
+	  
 		 description = request.getParameter("description");
-		 type_carton = request.getParameter("type_carton");
 		 carton_moyen= Integer.parseInt(request.getParameter("carton_moyen"));
 		 carton_petit= Integer.parseInt(request.getParameter("carton_petit"));
 		 carton_grand= Integer.parseInt(request.getParameter("carton_grand"));
 		  id = Integer.parseInt((request.getParameter("id")));
-		 nom = request.getParameter("nom");
-		 prenom = request.getParameter("prenom");
 		 reduction_offre =Float.parseFloat(request.getParameter("reduction_offre"));
-		Offre offre = new Offre(id,nom,prenom,reduction_offre,description,carton_moyen,carton_grand,carton_petit);
+		Offre offre = new Offre(id,reduction_offre,description,carton_moyen,carton_grand,carton_petit);
 		offreDao.insertOffre(offre);
-		offreDao.insertOffreCartonMoyen(offre);
-		offreDao.insertOffreCartonPetit(offre);
-		offreDao.insertOffreCartonMoyen(offre);
+		
 		response.sendRedirect("offre-list");
 	}
 

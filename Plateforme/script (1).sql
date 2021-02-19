@@ -41,6 +41,9 @@ CREATE TABLE Offre(
         reduction_offre Float NOT NULL ,
         id         Int NOT NULL
 		description Varchar (1000) NOT NULL ,
+		carton_moyen int not null,
+		carton_petit int not null,
+		carton_grand int not null
 	,CONSTRAINT Offre_PK PRIMARY KEY (id_offre)
 
 	,CONSTRAINT Offre_User_FK FOREIGN KEY (id) REFERENCES User(id)

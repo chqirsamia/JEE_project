@@ -231,7 +231,7 @@ public class UserDaoImp implements UserDao{
             
 				// Step 2:Create a statement using connection object
 			PreparedStatement preparedStatement = connection.prepareStatement("select * from users where role='admin'"); 
-			System.out.println(preparedStatement);
+			
 			// Step 3: Execute the query or update query
 			ResultSet rs = preparedStatement.executeQuery();
 

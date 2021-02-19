@@ -33,7 +33,6 @@
 			<h3 class="text-center">List of offers</h3>
 			<hr>
 			<div class="container text-left">
-
 				<a href="<%=request.getContextPath()%>/newOffre" class="btn btn-success">Add
 					New Offre</a>
 			</div>
@@ -46,8 +45,7 @@
 						<th>carton moyen</th>
 						<th>carton petit</th>
 						<th>carton grand</th>
-						<th>nom admin</th>
-						<th>prenom admin</th>
+						
 						<th>Actions</th>
 					</tr>
 				</thead>
@@ -61,8 +59,7 @@
 							<td><c:out value="${offre.carton_moyen}" /></td>
 							<td><c:out value="${offre.carton_petit}" /></td>
 							<td><c:out value="${offre.carton_grand}" /></td>
-							<td><c:out value="${offre.nom}" /></td>
-							<td><c:out value="${offre.prenom}" /></td>
+							
 							
 							<td> <a
 								href="delete?id=<c:out value='${offre.id_offre}' />">Delete</a></td>

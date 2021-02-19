@@ -15,10 +15,10 @@ public interface OffreDao {
 	 public List<Offre> selectAllOffres()throws SQLException;
 	 public boolean deleteOffre(int id) throws SQLException;
 	 public  Offre selectOffre(int id)throws SQLException;
-	 public int insertOffreCartonPetit(Offre offre) throws SQLException;
+	/* public int insertOffreCartonPetit(Offre offre) throws SQLException;
 	 
 	 public boolean deleteOffreCarton(Offre offre) throws SQLException;
 	 public boolean deleteOffreCarton(int id) throws SQLException;
 	 public int insertOffreCartonGrand(Offre offre) throws SQLException;
-	 public int insertOffreCartonMoyen(Offre offre) throws SQLException;
+	 public int insertOffreCartonMoyen(Offre offre) throws SQLException;*/
 }
