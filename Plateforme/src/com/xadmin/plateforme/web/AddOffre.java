@@ -44,20 +44,14 @@ public class AddOffre  extends HttpServlet {
 
 		try {
 			switch (action) {
-			case "/new":
+			case "/newOffre":
 				showNewForm(request, response);
 				break;
-			case "/insert":
+			case "/insertOffre":
 				insertOffre(request, response);
 				break;
-			case "/delete":
+			case "/deleteOffre":
 				deleteOffre(request, response);
-				break;
-			case "/edit":
-				showEditForm(request, response);
-				break;
-			case "/update":
-				updateOffre(request, response);
 				break;
 			default:
 				listOffre(request, response);
@@ -82,7 +76,7 @@ public class AddOffre  extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+	/*private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id_offre"));
 		Offre existingOffre = offreDao.selectOffre(id);
@@ -90,40 +84,68 @@ public class AddOffre  extends HttpServlet {
 		request.setAttribute("offre", existingOffre);
 		dispatcher.forward(request, response);
 
-	}
+	}*/
 
 	private void insertOffre(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
-		String description = request.getParameter("description");
-		String idP = request.getParameter("id");
-		int id=Integer.parseInt(idP);
-		String reduction_offreP = request.getParameter("reduction_offre");
-		int reduction_offre=Integer.parseInt(reduction_offreP);
-		Offre offre = new Offre(description,id,reduction_offre);
+		
+	   String description;
+	   int carton_moyen;
+	    int carton_petit;
+	    int carton_grand;
+	    int id;
+	    String type_carton;
+	     float reduction_offre; 
+	     String nom;
+	     String prenom;
+		 description = request.getParameter("description");
+		 type_carton = request.getParameter("type_carton");
+		 carton_moyen= Integer.parseInt(request.getParameter("carton_moyen"));
+		 carton_petit= Integer.parseInt(request.getParameter("carton_petit"));
+		 carton_grand= Integer.parseInt(request.getParameter("carton_grand"));
+		  id = Integer.parseInt((request.getParameter("id")));
+		 nom = request.getParameter("nom");
+		 prenom = request.getParameter("prenom");
+		 reduction_offre =Float.parseFloat(request.getParameter("reduction_offre"));
+		Offre offre = new Offre(id,nom,prenom,reduction_offre,description,carton_moyen,carton_grand,carton_petit);
 		offreDao.insertOffre(offre);
-		response.sendRedirect("list");
+		offreDao.insertOffreCartonMoyen(offre);
+		offreDao.insertOffreCartonPetit(offre);
+		offreDao.insertOffreCartonMoyen(offre);
+		response.sendRedirect("offre-list");
 	}
 
-	private void updateOffre(HttpServletRequest request, HttpServletResponse response) 
+	/*private void updateOffre(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
-		int id_offre = Integer.parseInt(request.getParameter("id_offre"));
-		String description = request.getParameter("description");
-		String idP = request.getParameter("id");
-		int id=Integer.parseInt(idP);
-		String reduction_offreP = request.getParameter("reduction_offre");
-		int reduction_offre=Integer.parseInt(reduction_offreP);
-		//String role =request.getParameter("role");
+		int carton_moyen;
+	    int carton_petit;
+	    int carton_grand;
+	    int id;
+	    String type_carton;
+	     float reduction_offre; 
+	     String nom;
+	     String prenom;
+		 String description = request.getParameter("description");
+		 type_carton = request.getParameter("type_carton");
+		 carton_moyen= Integer.parseInt(request.getParameter("carton_moyen"));
+		 carton_petit= Integer.parseInt(request.getParameter("carton_petit"));
+		 carton_grand= Integer.parseInt(request.getParameter("carton_grand"));
+		  id = Integer.parseInt((request.getParameter("id")));
+		 nom = request.getParameter("nom");
+		 prenom = request.getParameter("prenom");
 
-		Offre offre = new Offre(id_offre,description,id,reduction_offre);
+		 reduction_offre =Float.parseFloat(request.getParameter("reduction_offre"));
+			Offre offre = new Offre(id,nom,prenom,reduction_offre,description,carton_moyen,carton_grand,carton_petit);
+	
 		offreDao.updateOffre(offre);
 		response.sendRedirect("list");
-	}
+	}*/
 
 	private void deleteOffre(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		offreDao.deleteOffre(id);
-		response.sendRedirect("list");
+		response.sendRedirect("offre-list");
 
 	}
 	
