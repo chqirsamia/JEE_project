@@ -1,15 +1,12 @@
 package com.xadmin.plateforme.web;
 
 import java.io.IOException;
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.xadmin.plateforme.bean.Offre;
 import com.xadmin.plateforme.dao.DaoFactory;
 import com.xadmin.plateforme.dao.interfaces.OffreDao;
-
+@WebServlet("/offre")
 public class AddOffre  extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private OffreDao offreDao;

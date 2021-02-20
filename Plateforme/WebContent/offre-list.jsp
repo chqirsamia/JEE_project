@@ -64,9 +64,7 @@
 							
 							<td><c:out value="${offre.id}" /></td>
 							
-							<td> <a
-								href="delete?id=<c:out value='${offre.id_offre}' />">Delete</a></td>
-						</tr>
+							
 					</c:forEach>
 		
 				</tbody>
