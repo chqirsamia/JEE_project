@@ -23,7 +23,10 @@
       <li class="nav-item ">
         <a class="nav-link" style="font-size:20px" href="<c:url value='/user-list'/>">add admin <span class="sr-only">(current)</span></a>
       </li>
-      
+      <li class="nav-item "><a></a></li>
+      <li class="nav-item ">
+        <a class="nav-link" style="font-size:20px" href="<c:url value='/showDemande'/>">les demandes <span class="sr-only">(current)</span></a>
+      </li>
 
     </ul>
   </div>
