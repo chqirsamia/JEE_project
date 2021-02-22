@@ -9,6 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.xadmin.plateforme.dao.interfaces.OffreDao;
+import com.xadmin.plateforme.dao.interfaces.UserDao;
+import com.xadmin.plateforme.dao.interfaces.UserDaoImp;
+import com.xadmin.plateforme.dao.interfaces.OffreDaoImp;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
 import com.xadmin.plateforme.dao.interfaces.UserDao;
 import com.xadmin.plateforme.dao.interfaces.UserDaoImp;
 
@@ -50,5 +62,8 @@ public class DaoFactory {
     public UserDao getUserDao() {
         return new UserDaoImp( this );
     }
-
+    public OffreDao getOffreDao() {
+		// TODO Auto-generated method stub
+		 return new OffreDaoImp( this );
+	}
 }

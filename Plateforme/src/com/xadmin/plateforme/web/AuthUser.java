@@ -26,7 +26,7 @@ public class AuthUser extends HttpServlet {
 
     private static final String VUE_AUTHENTIFICATION = "/WEB-INF/authentification.jsp";
     private static final String VUE_USER_ACCUEIL = "/userAccueil";
-    private static final String VUE_ADMIN_ACCUEIL = "/userAdmin";
+    private static final String VUE_ADMIN_ACCUEIL = "Admin_acceuil.jsp";
 
     @Override
     public void init() throws ServletException {

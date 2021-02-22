@@ -29,7 +29,7 @@ public class UserInscriptionForm {
     private static final String CHAMP_ACCEPTE_TERMES = "accepte";
 
     private String resultat;
-    private Map<String, String> erreurs= new HashMap();
+    private Map<String, String> erreurs= new HashMap<String, String>();
 
     public Map<String, String> getErreurs() {
         return erreurs;

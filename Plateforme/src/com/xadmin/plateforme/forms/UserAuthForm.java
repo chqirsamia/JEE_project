@@ -24,7 +24,7 @@ public class UserAuthForm {
     private static final String CHAMP_EMAIL = "email";
 
     private String resultat;
-    private Map<String, String> erreurs = new HashMap();
+    private Map<String, String> erreurs = new HashMap<String, String>();
 
     public Map<String, String> getErreurs() {
         return erreurs;
