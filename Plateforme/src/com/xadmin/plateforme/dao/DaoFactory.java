@@ -39,7 +39,7 @@ public class DaoFactory {
 
         }
 
-        DaoFactory instance = new DaoFactory("jdbc:mysql://localhost/plateforme?serverTimezone=UTC", "root", "samia24799");
+        DaoFactory instance = new DaoFactory("jdbc:mysql://localhost/plateforme", "root", "");
         return instance;
     }
 
