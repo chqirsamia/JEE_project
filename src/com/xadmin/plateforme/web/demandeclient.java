@@ -68,7 +68,11 @@ public class demandeclient extends HttpServlet {
 		
 //save demande		
 	String action = request.getParameter("action");
-	if (action == "save") {
+	System.out.println(action);
+
+	if (action.equals("save")) {
+		System.out.println("je rentre à save");
+
 		try {
 			int id_demande = demande.insertDemande(id_client);
 //			System.out.println("id_demande : "+id_demande);
@@ -104,7 +108,7 @@ public class demandeclient extends HttpServlet {
 		
 		//send confirmation message
 		Map<String, String> map = new HashMap<String, String>();
-		if(id_demande != -1 && i>0 && j>0 && k>0) {
+		if(id_demande != -1 && (i>0 || j>0 || k>0)) {
 			map.put("msg", "Votre demande a été créée avec succès.");
             map.put("icon", "check");
 		}else {
@@ -112,13 +116,13 @@ public class demandeclient extends HttpServlet {
             map.put("icon", "exclamation-triangle");
 		}
 		request.setAttribute("isDemandeInserted", map);
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 	}else {
 		//View prix
+		System.out.println("je rentre à prix");
 		System.out.println(action);
 		List<Offre> ofs = offre.listerOffre();
 		for(Offre of : ofs) {
