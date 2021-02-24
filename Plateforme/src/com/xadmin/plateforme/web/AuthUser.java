@@ -2,7 +2,7 @@ package com.xadmin.plateforme.web;
 import com.xadmin.plateforme.bean.User;
 import com.xadmin.plateforme.dao.DaoFactory;
 import com.xadmin.plateforme.dao.interfaces.UserDao;
-import com.xadmin.plateforme.forms.UserAuthForm;
+import com.xadmin.plateforme.form.UserAuthForm;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +25,7 @@ public class AuthUser extends HttpServlet {
     private static final String ATT_FORM = "form";
 
     private static final String VUE_AUTHENTIFICATION = "/WEB-INF/authentification.jsp";
-    private static final String VUE_USER_ACCUEIL = "/userAccueil";
+    private static final String VUE_USER_ACCUEIL = "infoclient";
     private static final String VUE_ADMIN_ACCUEIL = "Admin_acceuil.jsp";
 
     @Override

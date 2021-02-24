@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.xadmin.plateforme.bean.Offre;
 import com.xadmin.plateforme.dao.DaoFactory;
 import com.xadmin.plateforme.dao.interfaces.OffreDao;
-@WebServlet("/insertOffre")
+@WebServlet("/InsertOffre")
 public class InsertOffre extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private OffreDao offreDao;
@@ -44,7 +44,7 @@ System.out.println(action);
 			case "/newOffre":
 				showNewForm(request, response);
 				break;
-			case "/insertOffre":
+			case "/InsertOffre":
 				insertOffre(request, response);
 				break;
 			case "/deleteOffre":
@@ -101,7 +101,7 @@ System.out.println(action);
 		 carton_moyen= Integer.parseInt(request.getParameter("carton_moyen"));
 		 carton_petit= Integer.parseInt(request.getParameter("carton_petit"));
 		 carton_grand= Integer.parseInt(request.getParameter("carton_grand"));
-		  id = Integer.parseInt((request.getParameter("id")));
+		  id = Integer.parseInt((request.getParameter("id_admin")));
 		 reduction_offre =Float.parseFloat(request.getParameter("reduction_offre"));
 		Offre offre = new Offre(id,reduction_offre,description,carton_moyen,carton_grand,carton_petit);
 		offreDao.insertOffre(offre);

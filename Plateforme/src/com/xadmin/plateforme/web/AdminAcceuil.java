@@ -5,11 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 public class AdminAcceuil extends HttpServlet {
-	 /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	static final String VUE_ACCUEIL = "/Admin_acceuil.jsp";
+	 static final String VUE_ACCUEIL = "/Admin_acceuil.jsp";
 
 	    @Override
 	    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

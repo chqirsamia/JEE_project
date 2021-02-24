@@ -1,30 +1,54 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>HSA</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+<!--CODE CSS-->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+crossorigin="anonymous">
+<!--Fichiers-->
+
+<link rel="stylesheet" href="http://localhost:8088/Plateforme/style.css">
+<link rel="stylesheet" href="./ressources/css/authentification.css">
+
+  <title>demandes</title>
+  
+  <style type="text/css">
+  	body {
+	    background: #E0EEEE;/* linear-gradient(to right, #c04848, #480048); */
+	    min-height: 100vh
+	}
+	
+
+	fieldset
+{
+  background-color:#B5DAE5;
+  max-width:500px;
+  padding:16px;	
+}
+	
+	.text-gray {
+	    color: #aaa
+	}
+
+  </style>
 </head>
+
 <body>
 
-	<header>
-		<nav class="navbar navbar-expand-md navbar-dark"
-			style="background-color: blue">
-			<div>
-				<a href="https://www.xadmin.net" class="navbar-brand"> ajouter admin </a>
-			</div>
+<!-- Menu -->
 
-			<ul class="navbar-nav">
-				<li><a href="<%=request.getContextPath()%>/list"
-					class="nav-link">Users</a></li>
-			</ul>
-		</nav>
-	</header>
-	<br>
+<c:import url="navbar-admin.jsp"/>
+
+	
 	<div class="container col-md-5">
 		<div class="card">
 			<div class="card-body">
@@ -38,10 +62,10 @@
 				<caption>
 					<h2>
 						<c:if test="${user != null}">
-            			Edit User
+            			Modifier Admin
             		</c:if>
 						<c:if test="${user == null}">
-            			Add New User
+            			Ajouter Admin
             		</c:if>
 					</h2>
 				</caption>
@@ -84,7 +108,7 @@
 				</fieldset>
 				
 
-				<button type="submit" class="btn btn-success">Save</button>
+				<button type="submit" class="btn btn-info">Save</button>
 				</form>
 			</div>
 		</div>

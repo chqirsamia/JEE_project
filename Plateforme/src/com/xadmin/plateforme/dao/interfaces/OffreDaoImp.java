@@ -276,7 +276,62 @@ public boolean deleteOffre(int id) throws SQLException {
 }
 
 
+@Override
+public List<Offre> listerOffre() {
+	List<Offre> offres = new ArrayList<Offre>();
+	String sql = "select * from offre";
+	Statement stmt;
+	ResultSet rs;
+	
+	try {
+		Connection con = daoFactory.getConnection();
+		stmt = con.createStatement();
+		rs = stmt.executeQuery(sql);
+		
+		while(rs.next()) {
+			Offre o = new Offre();
+			o.setId(rs.getInt("id_offre"));
+			o.setCarton_petit(getQteByOffre(o.getId(), daoFactory.getCartondao().getIdByType("P")));
+			o.setCarton_moyen(getQteByOffre(o.getId(), daoFactory.getCartondao().getIdByType("M")));
+			o.setCarton_grand(getQteByOffre(o.getId(), daoFactory.getCartondao().getIdByType("G")));
+			o.setDescription(rs.getString("description"));
+			o.setReduction_offre(rs.getFloat("reduction_offre"));
+			o.setId_admin(rs.getInt("id"));
+			
+			offres.add(o);
+		}
+	} catch (SQLException e) {
 
+		e.printStackTrace();
+	}
+
+	return offres;
+}
+
+@Override
+public int getQteByOffre(int id_offre, int id_carton) {
+	String sql = "select nbrcartondecide from offrecarton where id_offre = ? and id_carton = ?";
+	PreparedStatement pstmt;
+	ResultSet rs;
+	int nbr = -1;
+	try {
+		Connection con = daoFactory.getConnection();
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, id_offre);
+		pstmt.setInt(2, id_carton);
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			nbr = rs.getInt("nbrcartondecide");
+		}
+	} catch (SQLException e) {
+
+		e.printStackTrace();
+	}
+
+
+	return nbr;
+}
 
 
 

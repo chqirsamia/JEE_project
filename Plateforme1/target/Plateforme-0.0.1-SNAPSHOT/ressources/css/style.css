@@ -1,0 +1,425 @@
+
+@font-face {
+    font-family: Montserrat;
+    src: url('../fonts/montserrat/Montserrat-Regular.ttf'); 
+  }
+  
+  @font-face {
+    font-family: Montserrat-Bold;
+    src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
+  }
+  body{
+      overflow-x:hidden;
+      height: 100%;
+      font-family: Montserrat;
+      font-size: 12.5px;
+     
+  }
+
+  /*Menu*/
+  
+  .navbar{
+      opacity: 0.8;
+      border-bottom: 1.5px solid cornflowerblue;
+  }
+  .navbar-toggler{
+      position: fixed;
+      top: 2.5rem;
+      right: 2.5rem;
+      color: #eeeeee;
+      font-size: 3rem;
+      cursor: pointer;
+      z-index: 1000;
+      display: none;
+  }
+  .container-nav{
+      margin: 0 auto;
+  }
+  
+  nav{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+  }
+  
+  nav ul li a{
+      padding: 1rem 0;
+      margin: 0 3rem;
+      position: relative;
+      letter-spacing: 3px;
+  }
+  
+  nav ul li a:last-child{
+      margin-right: 0;
+  }
+  
+  nav ul li a::before,
+  nav ul li a::after{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color:cornflowerblue;
+      left: 0;
+      transform: scaleX(0);
+      transition: all .3s;
+  }
+  
+  nav ul li a::before{
+      top: 0;
+      transform-origin: left;
+  }
+  
+  nav ul li a::after{
+      bottom: 0;
+      transform-origin: right;
+  }
+  
+  
+  nav ul li a:hover::before,
+  nav ul li a:hover::after{
+      transform: scaleX(1);
+  }
+  
+  @media screen and (max-width: 700px){
+  
+      nav ul li a{
+          margin: 0;
+          font-size: 2rem;
+      }
+  
+      .brand{
+          font-size: 5rem;
+      }
+    
+  }
+  /*SLIDE*/
+  .carousel-item{
+      height: 650px;
+  }
+ 
+  /*TEXT*/
+  .mylead{
+      background-color: rgb(176,224,230);
+  }
+  .titreB{
+      background-color: #fff;
+  }
+  .textbg{
+      background-color:rgba(41, 128, 185,0.6);
+  }
+  .textbg1{
+      background-color:rgba(41, 128, 185,0.7);
+  }
+  
+  .login{
+      color:rgba(52, 73, 94,0.8);
+      font-size: 30px;
+  }
+  .text{
+      color:darkslategray;
+  }
+  .mypaddingtop{
+      padding-top:20px;
+  }
+  .mymarginleft{
+      margin-left: 100px;
+  }
+  
+  
+  * {
+    box-sizing: inherit  
+  }
+  
+  html {
+    box-sizing: border-box;
+    height: 100%;
+  }
+  
+  
+  input {
+    background-image: none;
+    border: none;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    transition: all .3s;
+  }
+  
+  
+  .align {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  
+  .grid {
+  margin-left: auto;
+   margin-right: auto;
+   margin-top: auto;
+    margin-bottom: 30px;
+    max-width: 90%;
+    width: 360px;
+    
+  }
+  
+  
+  #login h2 {
+      background: #5b7a9b;
+      border-radius: 0px 20px 0 0;
+      color: #fff;
+      font-size: 22px;
+      padding: 20px 26px;
+  }
+  
+  #login h2 span[class*="fontawesome-"] {
+      margin-right: 14px;
+  }
+  
+  #login fieldset {
+      background: #fff;
+      border-radius: 0 0 20px 20px;
+      padding: 20px 26px;
+      height: 430px;
+  }
+  
+  #login fieldset p {
+      color: #777;
+      margin-bottom: 14px;
+  }
+  
+  #login fieldset p:last-child {
+      margin-bottom: 0;
+  }
+  
+  
+  
+  #login fieldset input[type="submit"] {
+      background: #33cc77;
+      color: #fff;
+      display: block;
+      margin: 0 auto;
+      padding: 4px 0;
+      width: 100px;
+  }
+  
+  #login fieldset input[type="submit"]:hover {
+      background: #28ad63;
+  }
+  
+  
+  
+  
+  
+  /*Pour les fonts*/
+  :focus{outline: none;}
+  
+  .col-3{float: left; width: 27.33%; margin: 40px 3%; position: relative;} /* necessary to give position: relative to parent. */
+  input[type="text"]{font: 15px/24px "Lato", Arial, sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 1px;}
+  input[type="password"]{font: 15px/24px "Lato", Arial, sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 1px;}
+  .effect-3{border: 0; padding: 7px 0; border-bottom: 1px solid #ccc;}
+  
+  .effect-3 ~ .focus-border{position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; z-index: 99;}
+  .effect-3 ~ .focus-border:before, 
+  .effect-3 ~ .focus-border:after{content: ""; position: absolute; bottom: 0; left: 0; width: 0; height: 100%; background-color: #6c7a89; transition: 0.4s;}
+  .effect-3 ~ .focus-border:after{left: auto; right: 0;}
+  .effect-3:focus ~ .focus-border:before, 
+  .effect-3:focus ~ .focus-border:after{width: 50%; transition: 0.4s;}
+  
+  
+  
+  
+  
+  .a { 
+      color: #336e7b;
+      text-decoration: none;
+      transition: all .3s;
+  }
+  .a:hover { color: #81cfe0; 
+      border: 0; 
+      text-decoration: none;
+  }
+  
+  
+  .medium-paragraph { font-size: 17px; 
+      line-height: 32px; 
+  }
+  
+  ::-moz-selection { background: #81cfe0; color: #fff; text-shadow: none; }
+  ::selection { background: #81cfe0; color: #fff; text-shadow: none; }
+  
+  /*FOOTER*/
+  
+  
+  /**********/
+  
+  .footer-top {  padding: 50px 0; background: #333; text-align: left; color: #aaa; }
+
+
+
+  /*service*/
+.single-service-area {
+    position: relative;
+    z-index: 1;
+    text-align: center; }
+    .single-service-area .service-icon {
+      background-color: #e7f2fd;
+      width: 145px;
+      height: 110px;
+      font-size: 42px;
+      color: #303030;
+      text-align: center;
+      line-height: 110px;
+      border-radius: 80px 80px 80px 80px;
+      margin: 0 auto 30px;
+}
+      
+    .single-service-area:focus .service-icon, .single-service-area:hover .service-icon {
+      background-color: #408080;
+      color: #ffffff;
+
+}
+    .single-service-area:focus h5, .single-service-area:hover h5 {
+      color: black; }
+  
+  
+      /*Mini slider*/
+
+      .h2 {
+        color: #333;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: "Roboto", sans-serif;
+        font-weight: bold;
+        position: relative;
+        margin:20px 0 30px;
+      }
+
+      .h2::after {
+        content: "";
+        width: 240px;
+        position: absolute;
+        margin: 0 auto;
+        height: 3px;
+        background: #81cfe0;
+        left: 0;
+        right: 0;
+        bottom: -10px;
+      }
+
+
+.carousel .carousel-control {
+	width: 0px;
+    height: 40px; 
+    margin-left: -40px;
+    margin-right: -40px;
+    margin-top: 100px;
+    top: 30%;
+	background: none;
+}
+.carousel-control i {
+  font-size: 60px;
+  position: absolute;
+  display: inline-block;
+color: rgba(0, 0, 0, 0.8);
+  text-shadow: 0 3px 3px #e6e6e6, 0 0 0 #000;
+}
+.carousel .carousel-indicatorss {
+bottom: 350px;
+}
+.carousel-indicatorss li, .carousel-indicatorss li.active {
+
+	margin: 1px 3px;
+	
+}
+.carousel-indicatorss li {	
+	background: #999;
+	border-color: transparent;
+	box-shadow: inset 0 2px 1px rgba(0,0,0,0.2);
+}
+.carousel-indicatorss li.active {	
+	background: #555;		
+	box-shadow: inset 0 2px 1px rgba(0,0,0,0.2);
+}
+
+#infobar {
+  width: 500px;
+  height: 200px;
+  border: 1px solid #333;
+  overflow-y: scroll;
+}
+
+.content {
+  width: 100%;
+}
+
+.content div {
+  color: blue;
+  opacity: 0.5;
+}
+
+.content div span {
+  color: #666;
+}
+
+.info {
+  margin-top: 10px;
+}
+
+.example {
+  background-color: #F8F8F8;
+}
+
+.submit {
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 720px) {
+  #mobile {
+    padding: 20px 0;
+  }
+}
+
+#p-header {
+  height: 400px;
+  background: url('../img/1.jpg');
+  background-position: 0 -360px;
+  background-attachment: fixed;
+  background-size: cover;
+  color: #fff;
+  border-bottom: 1px #eee solid;
+  padding-top: 50px;
+}
+
+#aside .aside {
+  margin-bottom: 30px;
+}
+
+#aside .aside:last-child {
+  margin-bottom: 0px;
+}
+
+.aside .aside-title {
+  position: relative;
+  border-bottom: 1px solid #DADADA;
+  text-transform: uppercase;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  margin-top: 15px;
+  line-height: 24px;
+  font-size: 18px;
+}
+
+.aside .aside-title:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1.5px;
+  height: 3px;
+  width: 60px;
+  background-color: #52b3d9;
+}

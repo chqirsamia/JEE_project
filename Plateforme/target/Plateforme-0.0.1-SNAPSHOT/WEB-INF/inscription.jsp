@@ -23,7 +23,30 @@ crossorigin="anonymous">
 <body>
 
 <!-- Menu -->
-
+<!-- Modal Message -->
+<div class="modal fade" id="modalMessage" tabindex="-1" role="dialog" aria-labelledby="modalMessageLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Création d'un nouveau compte</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body border-0">
+      	<div class="text-center">
+      		<i class="fas fa-${isCreated.icon} fa-5x"></i>
+      		<h5><c:out value="${isCreated.msg}"></c:out></h5>
+      	</div>
+       
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Message -->
 <c:import url="/navbar.jsp"/>
 
   <section id="blog" class="py-3" style="background: url('./ressources/fond_authentif.jpg');background-size: cover;">
@@ -204,7 +227,14 @@ crossorigin="anonymous">
     
   </script>
   
-  
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<c:if test="${!empty isCreated}">
+	<script type="text/javascript">
+		$(window).on('load', function() {
+			$('#modalMessage').modal('show');
+		});
+	</script>
+</c:if>
   </body>
   </html>
-  

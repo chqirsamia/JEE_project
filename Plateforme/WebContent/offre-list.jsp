@@ -1,41 +1,52 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>plateforme demenagement</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+<!--CODE CSS-->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+crossorigin="anonymous">
+<!--Fichiers-->
+
+<link rel="stylesheet" href="./ressources/css/style.css">
+<link rel="stylesheet" href="./ressources/css/authentification.css">
+<title>admin</title>
+<style type="text/css">
+  	body {
+	    background: #E0EEEE;/* linear-gradient(to right, #c04848, #480048); */
+	    min-height: 100vh
+	}
+	
+
+	
+	
+	.text-gray {
+	    color: #aaa
+	}
+
+  </style>
 </head>
 <body>
 
-	<header>
-		<nav class="navbar navbar-expand-md navbar-dark"
-			style="background-color: blue">
-			<div>
-				<a href="#" class="navbar-brand"> liste des offres </a>
-			</div>
-
-			<ul class="navbar-nav">
-				<li><a href="<%=request.getContextPath()%>/user-list"
-					class="nav-link">listes des admins</a></li>
-			</ul>
-		</nav>
-	</header>
-	<br>
+	<c:import url="navbar-admin.jsp"/>
 
 	<div class="row">
 		<!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div> -->
 
 		<div class="container">
-			<h3 class="text-center">List of offers</h3>
+			<h3 class="text-center">Liste des Offres</h3>
 			<hr>
 			<div class="container text-left">
 
-				<a href="<c:url value='newOffre'/>" class="btn btn-success">Add
-					New Offre</a>
+				<a href="<c:url value='newOffre'/>" class="btn btn-info">ajouter une offre</a>
 			</div>
 			<br>
 			<table class="table table-bordered">

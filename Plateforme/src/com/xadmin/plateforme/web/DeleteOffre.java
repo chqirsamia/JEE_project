@@ -1,4 +1,5 @@
 package com.xadmin.plateforme.web;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -85,6 +86,7 @@ System.out.println(action);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("offre-form.jsp");
 		request.setAttribute("offre", existingOffre);
 		dispatcher.forward(request, response);
+
 	}*/
 
 	private void insertOffre(HttpServletRequest request, HttpServletResponse response) 
@@ -127,6 +129,7 @@ System.out.println(action);
 		  id = Integer.parseInt((request.getParameter("id")));
 		 nom = request.getParameter("nom");
 		 prenom = request.getParameter("prenom");
+
 		 reduction_offre =Float.parseFloat(request.getParameter("reduction_offre"));
 			Offre offre = new Offre(id,nom,prenom,reduction_offre,description,carton_moyen,carton_grand,carton_petit);
 	

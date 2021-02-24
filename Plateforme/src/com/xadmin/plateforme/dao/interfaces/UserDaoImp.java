@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.xadmin.plateforme.bean.Offre;
 import com.xadmin.plateforme.bean.User;
 import com.xadmin.plateforme.dao.DaoFactory;
 
@@ -17,6 +16,35 @@ public class UserDaoImp implements UserDao{
 	 public UserDaoImp(DaoFactory daoFactory) {
 		this.daoFactory = daoFactory;
 	}
+	 public List<User> selectAllClients()throws SQLException {
+
+			// using try-with-resources to avoid closing resources (boiler plate code)
+			List<User> users = new ArrayList<>();
+			 
+			// Step 1: Establishing a Connection
+			Connection connection = daoFactory.getConnection();
+	            
+					// Step 2:Create a statement using connection object
+				PreparedStatement preparedStatement = connection.prepareStatement("select * from users where role='C'"); 
+				
+				// Step 3: Execute the query or update query
+				ResultSet rs = preparedStatement.executeQuery();
+
+				// Step 4: Process the ResultSet object.
+				while (rs.next()) {
+					int id = rs.getInt("id");
+					String name = rs.getString("nom");
+					String prenom = rs.getString("prenom");
+					String tel = rs.getString("tel");
+					String email = rs.getString("email");
+					String sexe = rs.getString("sexe");
+					String password = rs.getString("password");
+					String role = rs.getString("role");
+					users.add(new User(id, name, prenom,email,sexe,tel,password,role));
+				}
+			
+			return users;
+		}
 	public User findSpecificUser(User user) throws SQLException {
         String sql;
         PreparedStatement preparedStmt = null;
@@ -114,35 +142,6 @@ public class UserDaoImp implements UserDao{
 
         return idrowInserted;
     }
-	
-    public int insertAdmin(User user) throws SQLException {
-        int idrowInserted;
-        String sql;
-        PreparedStatement preparedStmt = null;
-        ResultSet resultset = null;
-        Connection connection = daoFactory.getConnection();
-        sql = "INSERT INTO `users`(nom,prenom,email,sexe,tel,password,role) " +
-                "VALUES (?,?,?,?,?,?,'A')";
-        preparedStmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        preparedStmt.setString(1, user.getNom());
-        preparedStmt.setString(2, user.getPrenom());
-        preparedStmt.setString(3, user.getEmail());
-        preparedStmt.setString(4, user.getSexe());
-        preparedStmt.setString(5, user.getTel());
-        preparedStmt.setString(6, user.getPassword());
-
-        preparedStmt.execute();
-        resultset = preparedStmt.getGeneratedKeys();
-        if (resultset.next()) {
-            idrowInserted = resultset.getInt(1);
-        } else {
-            idrowInserted = -1;
-        }
-        preparedStmt.close();
-        resultset.close();
-
-        return idrowInserted;
-    }
 
     @Override
     public boolean updateUser(User user) throws SQLException {
@@ -150,7 +149,7 @@ public class UserDaoImp implements UserDao{
         String sql;
         PreparedStatement preparedStmt = null;
         Connection connection = daoFactory.getConnection();
-        sql = "UPDATE users set nom = ? , prenom = ? , email = ? ,sexe= ?,tel= ?, password = ?, role=? where ID = ?";
+        sql = "UPDATE users set nom = ? , prenom = ? , email = ? ,sexe= ?,tel= ?, password = ? where id = ?";
         preparedStmt = connection.prepareStatement(sql);
         preparedStmt.setString(1, user.getNom());
         preparedStmt.setString(2, user.getPrenom());
@@ -158,30 +157,13 @@ public class UserDaoImp implements UserDao{
         preparedStmt.setString(4, user.getSexe());
         preparedStmt.setString(5, user.getTel());
         preparedStmt.setString(6, user.getPassword());
-        preparedStmt.setString(7, user.getRole());
+        preparedStmt.setInt(7, user.getId());
         rowUpdated = preparedStmt.executeUpdate() > 0;
 
         preparedStmt.close();
 
         return rowUpdated;
     }
-
-    @Override
-    public boolean deleteUser(User user) throws SQLException {
-        boolean rowDeleted;
-        String sql;
-        PreparedStatement preparedStmt;
-        Connection connection = daoFactory.getConnection();
-        sql = "DELETE from users where id = ?";
-        preparedStmt = connection.prepareStatement(sql);
-        preparedStmt.setLong(1, user.getId());
-        rowDeleted = preparedStmt.executeUpdate() > 0;
-
-        preparedStmt.close();
-
-        return rowDeleted;
-    }
-    
     public boolean deleteUser(int id) throws SQLException {
         boolean rowDeleted;
         String sql;
@@ -197,7 +179,86 @@ public class UserDaoImp implements UserDao{
 
         return rowDeleted;
     }
-    public User selectUser(int id)throws SQLException {
+    @Override
+    public boolean deleteUser(User user) throws SQLException {
+        boolean rowDeleted;
+        String sql;
+        PreparedStatement preparedStmt;
+        Connection connection = daoFactory.getConnection();
+        sql = "DELETE from users where id = ?";
+        preparedStmt = connection.prepareStatement(sql);
+        preparedStmt.setLong(1, user.getId());
+        rowDeleted = preparedStmt.executeUpdate() > 0;
+
+        preparedStmt.close();
+
+        return rowDeleted;
+    }
+	@Override
+	public User findSpecificUser(int id) throws SQLException {
+		String sql;
+        PreparedStatement preparedStmt = null;
+        ResultSet resultset;
+        Connection connection = daoFactory.getConnection();
+
+        sql = "SELECT `id`, `nom`, `prenom`, `email`, `sexe`,`tel`, `password`, `role`"+
+                "FROM `users` WHERE id = ? ";
+        preparedStmt = connection.prepareStatement(sql);
+        preparedStmt.setInt(1,id);
+        
+        resultset = preparedStmt.executeQuery();
+        User returnedUser;
+        if( resultset.next() ) {
+            returnedUser = new User();
+            returnedUser.setId(resultset.getInt("id"));
+            returnedUser.setNom(resultset.getString("nom"));
+            returnedUser.setPrenom(resultset.getString("prenom"));
+            returnedUser.setEmail(resultset.getString("email"));
+            returnedUser.setSexe(resultset.getString("sexe"));
+            returnedUser.setTel(resultset.getString("tel"));
+            returnedUser.setPassword(resultset.getString("password"));
+            returnedUser.setRole(resultset.getString("role"));
+        } else {
+            returnedUser = null;
+        }
+
+        resultset.close();
+        preparedStmt.close();
+
+        return returnedUser;
+	}
+	
+
+	public List<User> selectAllUsers()throws SQLException {
+
+		// using try-with-resources to avoid closing resources (boiler plate code)
+		List<User> users = new ArrayList<>();
+		 
+		// Step 1: Establishing a Connection
+		Connection connection = daoFactory.getConnection();
+            
+				// Step 2:Create a statement using connection object
+			PreparedStatement preparedStatement = connection.prepareStatement("select * from users where role='A'"); 
+			
+			// Step 3: Execute the query or update query
+			ResultSet rs = preparedStatement.executeQuery();
+
+			// Step 4: Process the ResultSet object.
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String name = rs.getString("nom");
+				String prenom = rs.getString("prenom");
+				String tel = rs.getString("tel");
+				String email = rs.getString("email");
+				String sexe = rs.getString("sexe");
+				String password = rs.getString("password");
+				String role = rs.getString("role");
+				users.add(new User(id, name, prenom,email,sexe,tel,password,role));
+			}
+		
+		return users;
+	}
+	public User selectUser(int id)throws SQLException {
 		User user = null;
 		// Step 1: Establishing a Connection
 		Connection connection = daoFactory.getConnection();
@@ -223,40 +284,37 @@ public class UserDaoImp implements UserDao{
 		return user;
 	}
 
-    public List<User> selectAllUsers()throws SQLException {
+	@Override
+	public int insertAdmin(User user) throws SQLException {
+        int idrowInserted;
+        String sql;
+        
+        PreparedStatement preparedStmt = null;
+        ResultSet resultset = null;
+        Connection connection = daoFactory.getConnection();
+        Statement stat=connection.createStatement();
+        sql = "INSERT INTO `users`(nom,prenom,email,sexe,tel,password,role) " +
+                "VALUES (?,?,?,?,?,?,'A')";
+      
+        preparedStmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        preparedStmt.setString(1, user.getNom());
+        preparedStmt.setString(2, user.getPrenom());
+        preparedStmt.setString(3, user.getEmail());
+        preparedStmt.setString(4, user.getSexe());
+        preparedStmt.setString(5, user.getTel());
+        preparedStmt.setString(6, user.getPassword());
+        preparedStmt.execute();
+        resultset = preparedStmt.getGeneratedKeys();
+        if (resultset.next()) {
+            idrowInserted = resultset.getInt(1);
+        } else {
+            idrowInserted = -1;
+        }
+        preparedStmt.close();
+        resultset.close();
 
-		// using try-with-resources to avoid closing resources (boiler plate code)
-		List<User> users = new ArrayList<>();
-		 
-		// Step 1: Establishing a Connection
-		Connection connection = daoFactory.getConnection();
-            
-				// Step 2:Create a statement using connection object
-			PreparedStatement preparedStatement = connection.prepareStatement("select * from users where role='admin'"); 
-			
-			// Step 3: Execute the query or update query
-			ResultSet rs = preparedStatement.executeQuery();
-
-			// Step 4: Process the ResultSet object.
-			while (rs.next()) {
-				int id = rs.getInt("id");
-				String name = rs.getString("nom");
-				String prenom = rs.getString("prenom");
-				String tel = rs.getString("tel");
-				String email = rs.getString("email");
-				String sexe = rs.getString("sexe");
-				String password = rs.getString("password");
-				String role = rs.getString("role");
-				users.add(new User(id, name, prenom,email,sexe,tel,password,role));
-			}
-		
-		return users;
-	}
-
-
-
-
-
-
+        return idrowInserted;
+    }
+	
 
 }

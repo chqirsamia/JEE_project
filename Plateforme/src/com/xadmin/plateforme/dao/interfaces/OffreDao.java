@@ -16,6 +16,8 @@ public interface OffreDao {
 	 public boolean deleteOffre(int id) throws SQLException;
 	 public  Offre selectOffre(int id)throws SQLException;
 	 public int setid(Offre offre)throws SQLException;
+	 public List<Offre> listerOffre();
+		public int getQteByOffre(int id_offre, int id_carton);
 	/* public int insertOffreCartonPetit(Offre offre) throws SQLException;
 	 
 	 public boolean deleteOffreCarton(Offre offre) throws SQLException;

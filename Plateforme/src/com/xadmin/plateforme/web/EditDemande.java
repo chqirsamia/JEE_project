@@ -2,18 +2,15 @@ package com.xadmin.plateforme.web;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.xadmin.plateforme.bean.Demande;
 import com.xadmin.plateforme.dao.DaoFactory;
-import com.xadmin.plateforme.dao.interfaces.DemandeDaoImp;
+import com.xadmin.plateforme.dao.interfaces.DemandeDao;
 
 /**
  * Servlet implementation class EditDemande
@@ -21,7 +18,16 @@ import com.xadmin.plateforme.dao.interfaces.DemandeDaoImp;
 @WebServlet("/EditDemande")
 public class EditDemande extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private DemandeDaoImp demandeDao;
+	private DemandeDao demandeDao; 
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public EditDemande() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -71,11 +77,9 @@ public class EditDemande extends HttpServlet {
     	private void edit(HttpServletRequest request, HttpServletResponse response)
     			throws ServletException, IOException, SQLException {
     		int id = Integer.parseInt(request.getParameter("id"));
-    		Demande existingDemande = demandeDao.selectDemande(id);
     		demandeDao.updateDemande(id);
-    		response.sendRedirect("showDemande");
+    	
+    		response.sendRedirect("ShowDemandeT");
     		
     	}
-
-    	
 }

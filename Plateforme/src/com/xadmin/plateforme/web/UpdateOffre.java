@@ -90,6 +90,7 @@ System.out.println(action);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("offre-form.jsp");
 		request.setAttribute("offre", existingOffre);
 		dispatcher.forward(request, response);
+
 	}*/
 
 	private void insertOffre(HttpServletRequest request, HttpServletResponse response) 

@@ -1,38 +1,13 @@
 package com.xadmin.plateforme.bean;
 
+import java.sql.Date;
+
 public class Demande {
+
 	private int id;
-	 private int id_user;
-    private int carton_moyen;
-    private int carton_petit;
-    private int carton_grand;
-    private float prix_total; 
-    private String etat; 
-    public String  getEtat() {
-		return etat;
-	}
-	public void setEtat(String etat) {
-		this.etat = etat;
-	}
-	public float  getPrix_total() {
-		return prix_total;
-	}
-	public void setPrix_total(float prix_total) {
-		this.prix_total = prix_total;
-	}
-	
-	public int getCarton_moyen() {
-		return carton_moyen;
-	}
-	public void setCarton_moyen(int carton_moyen) {
-		this.carton_moyen = carton_moyen;
-	}
-	public int getCarton_petit() {
-		return carton_petit;
-	}
-	public void setCarton_petit(int carton_petit) {
-		this.carton_petit = carton_petit;
-	}
+	private Date date_creation;
+	private int id_client;
+	private String etat;//facture
 	
 	public int getId() {
 		return id;
@@ -40,45 +15,35 @@ public class Demande {
 	public void setId(int id) {
 		this.id = id;
 	}
+	public Date getDate_creation() {
+		return date_creation;
+	}
+	public void setDate_creation(Date date_creation) {
+		this.date_creation = date_creation;
+	}
+	public int getId_client() {
+		return id_client;
+	}
+	public void setId_client(int id_client) {
+		this.id_client = id_client;
+	}
 	
-	public int getCarton_grand() {
-		return carton_grand;
+	public String getEtat() {
+		return etat;
 	}
-	public void setCarton_grand(int carton_grand) {
-		this.carton_grand = carton_grand;
+	public void setEtat(String etat) {
+		this.etat = etat;
 	}
-	
-	public Demande() {
-        super();
-    }
-	public int getId_user() {
-		return id_user;
-	}
-	public void setId_user(int id_user) {
-		this.id_user = id_user;
-	}
-	 
-	public Demande (int id,float prix_total,int id_user,int carton_grand,int carton_moyen,int carton_petit ,String etat) {
+	public Demande(int id, Date date_creation, int id_client,String etat) {
 		super();
 		this.id = id;
-		this.id_user = id_user;
-		this.carton_grand = carton_grand;
-		this.carton_moyen = carton_moyen;
-		this.carton_petit = carton_petit;
-		this.prix_total = prix_total;
-		this.etat = etat;
-		
+		this.date_creation = date_creation;
+		this.id_client = id_client;
+		this.etat =etat;
 	}
-	public Demande (float prix_total,int id_user,int carton_grand,int carton_moyen,int carton_petit,String etat ) {
+	public Demande() {
 		super();
-		
-		this.id_user = id_user;
-		this.carton_grand = carton_grand;
-		this.carton_moyen = carton_moyen;
-		this.carton_petit = carton_petit;
-		this.prix_total = prix_total;
-		this.etat = etat;
 	}
-
-
+	
+	
 }

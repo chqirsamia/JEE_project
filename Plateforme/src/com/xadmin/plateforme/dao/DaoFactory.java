@@ -9,14 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.xadmin.plateforme.dao.interfaces.CartonDao;
+import com.xadmin.plateforme.dao.interfaces.CartonDaoImpl;
+import com.xadmin.plateforme.dao.interfaces.CartonDemandeDao;
+import com.xadmin.plateforme.dao.interfaces.CartonDemandeImp;
+import com.xadmin.plateforme.dao.interfaces.DemandeDao;
+import com.xadmin.plateforme.dao.interfaces.DemandeDaoImp;
 import com.xadmin.plateforme.dao.interfaces.OffreDao;
-import com.xadmin.plateforme.dao.interfaces.UserDao;
-import com.xadmin.plateforme.dao.interfaces.DemandeDao;
-
-import com.xadmin.plateforme.dao.interfaces.UserDaoImp;
 import com.xadmin.plateforme.dao.interfaces.OffreDaoImp;
-import com.xadmin.plateforme.dao.interfaces.DemandeDao;
-
+import com.xadmin.plateforme.dao.interfaces.UserDao;
+import com.xadmin.plateforme.dao.interfaces.UserDaoImp;
 
 public class DaoFactory {
 
@@ -39,7 +41,7 @@ public class DaoFactory {
 
         }
 
-        DaoFactory instance = new DaoFactory("jdbc:mysql://localhost/plateforme", "root", "");
+        DaoFactory instance = new DaoFactory("jdbc:mysql://localhost/plateforme?serverTimezone=UTC", "root", "samia24799");
         return instance;
     }
 
@@ -56,13 +58,19 @@ public class DaoFactory {
     public UserDao getUserDao() {
         return new UserDaoImp( this );
     }
-	public OffreDao getOffreDao() {
-		// TODO Auto-generated method stub
-		 return new OffreDaoImp( this );
-	}
-	public DemandeDao getDemandeDao() {
-		// TODO Auto-generated method stub
-		 return new DemandeDao( this );
-	}
 
+    public CartonDao getCartondao() {
+    	return new CartonDaoImpl(this);
+    }
+    
+    public CartonDemandeDao getCartonDemDao() {
+    	return new CartonDemandeImp(this);
+    }
+    
+    public DemandeDao getDemandeDao() {
+    	return new DemandeDaoImp(this);
+    }
+    public OffreDao getOffreDao() {
+    	return new OffreDaoImp(this);
+    }
 }

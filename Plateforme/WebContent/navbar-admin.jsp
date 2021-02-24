@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
+ <c:if test = "${empty sessionScope.userId}"> <c:redirect url="authentification"></c:redirect></c:if>
 <i class="fas fa-box-open fa-2x" style="color:white"></i>
   <a class="navbar-brand" style="font-family:cursive;font-size:30px;height:200%" href="Acceuil.jsp">HSA</a>
   
@@ -13,19 +13,22 @@
       <li class="nav-item"><a></a><li>
       <li class="nav-item ">
         
-        <a class="nav-link" style="font-size:20px" href="Acceuil.jsp">Accueil <span class="sr-only">(current)</span></a>
+        <a class="nav-link" style="font-size:20px" href="Admin_acceuil.jsp">Accueil <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item "><a></a></li>
       <li class="nav-item ">
-        <a class="nav-link" style="font-size:20px" href="<c:url value='/offre'/>">mes offres <span class="sr-only">(current)</span></a>
+        <a class="nav-link" style="font-size:20px" href="<c:url value='/offre'/>">Mes offres <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item "><a></a></li>
       <li class="nav-item ">
-        <a class="nav-link" style="font-size:20px" href="<c:url value='/user-list'/>">add admin <span class="sr-only">(current)</span></a>
+        <a class="nav-link" style="font-size:20px" href="<c:url value='/user-list'/>">Ajouter Admin <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item "><a></a></li>
       <li class="nav-item ">
-        <a class="nav-link" style="font-size:20px" href="<c:url value='/showDemande'/>">les demandes <span class="sr-only">(current)</span></a>
+        <a class="nav-link" style="font-size:20px" href="<c:url value='/ShowDemandeT'/>">Demandes <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="font-size:20px" href="<c:url value='/authentification'/>">Déconnexion <span class="sr-only">(current)</span></a>
       </li>
 
     </ul>
