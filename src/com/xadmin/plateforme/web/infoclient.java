@@ -2,6 +2,8 @@ package com.xadmin.plateforme.web;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -68,6 +70,17 @@ public class infoclient extends HttpServlet {
 		if(confPw == u.getPassword()) {
 			try {
 				boolean b = user.updateUser(u);
+				//send confirmation message
+				Map<String, String> map = new HashMap<String, String>();
+				if (b == true) {
+					map.put("msg", "Vos informations ont été modifiées avec succès !!");
+		            map.put("icon", "check");
+				}else {
+					map.put("msg", "Un problème est survenu !! Veuillez rééssayer ultérieurement.");
+		            map.put("icon", "exclamation-triangle");
+				}
+				
+				request.setAttribute("isEdited", map);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

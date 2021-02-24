@@ -86,4 +86,30 @@ public class CartonDaoImpl implements CartonDao{
 		return id;
 	}
 
+	@Override
+	public float getPriceByType(String type) {
+		String sql;
+		PreparedStatement pstmt;
+		ResultSet rs;
+		float price = 0;
+		Connection con;
+		try {
+			con = daofactory.getConnection();
+			sql = "select prix from Carton where type_carton = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, type);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				price = rs.getFloat("prix");
+			}
+			rs.close();
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return price;
+	}
+
 }

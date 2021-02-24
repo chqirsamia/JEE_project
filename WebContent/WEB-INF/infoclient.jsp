@@ -8,7 +8,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
 <!--CODE CSS-->
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
 crossorigin="anonymous">
@@ -60,8 +61,33 @@ crossorigin="anonymous">
 <body>
 
 <!-- Menu -->
-
+ <c:if test = "${empty sessionScope.userId}"> <c:redirect url="authentification"></c:redirect></c:if>
 <c:import url="clientNav.jsp"/>
+
+<!-- Modal Message -->
+<div class="modal fade" id="modalMessage" tabindex="-1" role="dialog" aria-labelledby="modalMessageLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Informations Personnelles</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body border-0">
+      	<div class="text-center">
+      		<i class="fas fa-${isEdited.icon} fa-5x"></i>
+      		<h5><c:out value="${isEdited.msg}"></c:out></h5>
+      	</div>
+       
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Message -->
 
 <div class="container py-5">
 <div class="row text-center mb-5">
@@ -111,7 +137,14 @@ crossorigin="anonymous">
 </div>
 </form>
 </div>
-<script type="text/javascript" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<c:if test="${!empty isEdited}">
+	<script type="text/javascript">
+		$(window).on('load', function() {
+			$('#modalMessage').modal('show');
+		});
+	</script>
+</c:if>
 </body>
 </html>

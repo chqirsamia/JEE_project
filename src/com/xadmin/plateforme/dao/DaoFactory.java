@@ -1,13 +1,8 @@
 package com.xadmin.plateforme.dao;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
 
 import com.xadmin.plateforme.dao.interfaces.CartonDao;
 import com.xadmin.plateforme.dao.interfaces.CartonDaoImpl;
@@ -15,6 +10,8 @@ import com.xadmin.plateforme.dao.interfaces.CartonDemandeDao;
 import com.xadmin.plateforme.dao.interfaces.CartonDemandeImp;
 import com.xadmin.plateforme.dao.interfaces.DemandeDao;
 import com.xadmin.plateforme.dao.interfaces.DemandeDaoImp;
+import com.xadmin.plateforme.dao.interfaces.OffreDao;
+import com.xadmin.plateforme.dao.interfaces.OffreDaoImp;
 import com.xadmin.plateforme.dao.interfaces.UserDao;
 import com.xadmin.plateforme.dao.interfaces.UserDaoImp;
 
@@ -67,5 +64,9 @@ public class DaoFactory {
     
     public DemandeDao getDemandeDao() {
     	return new DemandeDaoImp(this);
+    }
+    
+    public OffreDao getOffreDao() {
+    	return new OffreDaoImp(this);
     }
 }

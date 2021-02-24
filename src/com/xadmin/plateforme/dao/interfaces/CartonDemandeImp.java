@@ -59,7 +59,7 @@ public class CartonDemandeImp implements CartonDemandeDao{
 	}
 
 	@Override
-	public void addCartonDemande(CartonDemande cd) throws SQLException {
+	public int addCartonDemande(CartonDemande cd) throws SQLException {
         String sql;
         PreparedStatement preparedStmt = null;
         Connection con = daofactory.getConnection();
@@ -70,11 +70,12 @@ public class CartonDemandeImp implements CartonDemandeDao{
         preparedStmt.setInt(2, cd.getId_carton());
         preparedStmt.setInt(3, cd.getNbr());
 
-        preparedStmt.executeUpdate();
+        int nbr = preparedStmt.executeUpdate();
         
         preparedStmt.close();
         con.close();
         
+        return nbr;
 	}
 
 	@Override

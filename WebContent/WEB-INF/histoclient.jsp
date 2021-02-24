@@ -37,7 +37,7 @@ crossorigin="anonymous">
 <body>
 
 <!-- Menu -->
-
+ <c:if test = "${empty sessionScope.userId}"> <c:redirect url="authentification"></c:redirect></c:if>
 <c:import url="clientNav.jsp"/>
 <div class="container py-5">
     <div class="row text-center mb-5">

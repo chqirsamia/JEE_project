@@ -9,7 +9,7 @@ import com.xadmin.plateforme.classesneeded.LigneDemandeSpec;
 public interface CartonDemandeDao {
 
 	 public List<LigneDemandeSpec> findCartonDemande(int id_demande) throws SQLException;
-	 public void addCartonDemande(CartonDemande cd) throws SQLException;
+	 public int addCartonDemande(CartonDemande cd) throws SQLException;
 	 public boolean updateCartonDemande(CartonDemande cd) throws SQLException;
 	 public boolean deleteCartonDemande(CartonDemande cd) throws SQLException; 
 }
