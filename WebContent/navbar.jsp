@@ -17,7 +17,7 @@
       </li>
       <li class="nav-item "><a></a></li>
       <li class="nav-item ">
-        <a class="nav-link" style="font-size:20px" href="#">Nos offres <span class="sr-only">(current)</span></a>
+        <a class="nav-link" style="font-size:20px" href="<c:url value='/offres'/>">Nos offres <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item "><a></a></li>
       <li class="nav-item ">
