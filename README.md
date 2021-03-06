@@ -4,7 +4,7 @@ _Image du projet :Docker hub :_
 
 Ce présent travail est  une application Web fonctionnelle basée complètement sur Java EE.
 C'est une plateforme d'une société de déménagement qui a pour but d'établir le lien entre les clients et les déménageurs,assurer la demande du service de  déménagement,mettre en relation des clients souhaitant opter pour une offre de déménagement avec des professionnels de déménagement la proposant à travers cette plateforme,établir une plateforme intuitive et ergonomique avec laquelle le client peut interagir avec simplicité sans avoir à parcourir plusieurs pages, seulement avec quelques clics,assurer la personnalisation des demandes effectuées . 
-
+ ![alt text](https://github.com/chqirsamia/JEE_project/blob/plateformefinale/WhatsApp Image 2021-03-06 at 23.00.42.jpeg)
 
 ### Pré-requis
 
