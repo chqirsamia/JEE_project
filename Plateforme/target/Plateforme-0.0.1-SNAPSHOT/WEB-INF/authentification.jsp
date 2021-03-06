@@ -15,9 +15,9 @@ crossorigin="anonymous">
 crossorigin="anonymous">
 <!--Fichiers-->
 
-<link rel="stylesheet" href="./ressources/css/style.css">
-<link rel="stylesheet" href="./ressources/css/authentification.css">
-
+<link rel="stylesheet" href="/ressources/css/style.css">
+<link rel="stylesheet" href="/ressources/css/authentification.css">
+<link rel="stylesheet" href="/ressources/css/validation.css">
 
 
   <title>Connexion</title>
@@ -27,9 +27,9 @@ crossorigin="anonymous">
 
 <!-- Menu -->
 
-<c:import url="../navbar.jsp"/>
+<c:import url="/navbar.jsp"/>
   
-  <section id="blog" class="py-3" style="background: url('./ressources/fond_authentif.jpg');background-size: cover;">
+  <section id="blog" class="py-3" style="background: url('../ressources/fond_authentif.jpg');background-size: cover;">
    <div  style=" margin-top: -20px; margin-bottom: -20px;">
 		<div class="container-inscription">
 
@@ -120,7 +120,8 @@ crossorigin="anonymous">
 </footer>
 
 <!--CODE JAVASCRIPT-->
-
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
 
 <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
 <script>

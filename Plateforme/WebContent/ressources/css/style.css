@@ -8,6 +8,7 @@
     font-family: Montserrat-Bold;
     src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
   }
+
   body{
       overflow-x:hidden;
       height: 100%;
@@ -96,6 +97,7 @@
     
   }
   /*SLIDE*/
+ 
   .carousel-item{
       height: 650px;
   }

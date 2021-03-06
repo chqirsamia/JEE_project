@@ -8,10 +8,12 @@
     <!--Liens css pour icones fas-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="ressources/css/style.css">
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+crossorigin="anonymous">
+    <link rel="stylesheet" href="ressources\css\style.css">
     
     <!--Fichiers-->
-    <link rel="icon" type="image/png" href="ressources/logo.png"/>
+    <link rel="icon" type="image/png" href="ressources\logo.png"/>
     <link rel="stylesheet" type="text/css" href="ressources/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="ressources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <title>HSA</title>
@@ -24,7 +26,7 @@
 <c:import url="navbar.jsp"/>
 
 <!-- Page d'acceuil -->
-<section id="slide" style="background: url('./ressources/demenagement2.jpg');background-size: cover;">
+<section id="slide" style="background: url('ressources/demenagement2.jpg');background-size: cover;">
 <div class="carousel-item carousel-image-1   active">
  <div class="carousel-caption d-non d-sm-block text-center" >
 <h2 class="display-4 d-inline mylead" style="background-color: rgb(119,136,153); font-family:  Lucida Console; font-size:110px;">Bienvenue à HSA </h2> 
@@ -124,7 +126,8 @@
 <!--Complément JS-->
 
 <!--Mouvement lors de l'affichage-->
-
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
 <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
 <script>
 ScrollReveal().reveal('.mylead',{
