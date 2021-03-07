@@ -1,5 +1,6 @@
 package com.xadmin.plateforme.dao.interfaces;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,7 @@ import java.util.List;
 
 import com.xadmin.plateforme.bean.User;
 import com.xadmin.plateforme.dao.DaoFactory;
+import com.xadmin.plateforme.forms.UserAuthForm;
 
 public class UserDaoImp implements UserDao{
 	private DaoFactory daoFactory;
@@ -57,8 +59,7 @@ public class UserDaoImp implements UserDao{
         ResultSet resultset;
         Connection connection = daoFactory.getConnection();
         List<User> listofUsers = new ArrayList<User>();
-        sql = "SELECT id, nom, prenom, email,sexe,tel,role" +
-                "FROM users";
+        sql = "SELECT id, nom, prenom, email,sexe,tel,role FROM users";
         stmt = connection.createStatement();
         resultset = stmt.executeQuery(sql);
         int id;
@@ -70,11 +71,10 @@ public class UserDaoImp implements UserDao{
             nom = resultset.getString("nom");
             prenom = resultset.getString("prenom");;
             email = resultset.getString("email");
-            password = resultset.getString("password");
             sexe = resultset.getString("sexe");
             tel = resultset.getString("tel");
             role = resultset.getString("role");
-            usertoAdd = new User(id,nom,prenom,email,sexe,tel,password,role);
+            usertoAdd = new User(id,nom,prenom,email,sexe,tel,role);
             listofUsers.add(usertoAdd);
         }
 
@@ -183,6 +183,38 @@ public class UserDaoImp implements UserDao{
         preparedStmt.close();
 
         return returnedUser;
+	}
+	@Override
+	public List<User> findAllUsersHashed() throws SQLException {
+		String sql;
+        Statement stmt;
+        ResultSet resultset;
+        Connection connection = daoFactory.getConnection();
+        List<User> listofUsers = new ArrayList<User>();
+        sql = "SELECT id, nom, prenom, email,sexe,tel,role,password FROM users";
+        stmt = connection.createStatement();
+        resultset = stmt.executeQuery(sql);
+
+        String nom, prenom, email,sexe,tel,password,role;
+        User usertoAdd;
+
+        while( resultset.next() ) {
+            nom = resultset.getString("nom");
+            prenom = resultset.getString("prenom");
+			password = resultset.getString("password");
+
+            email = resultset.getString("email");
+            sexe = resultset.getString("sexe");
+            tel = resultset.getString("tel");
+            role = resultset.getString("role");
+            usertoAdd = new User(nom, prenom, email, sexe, tel, password, role);
+            listofUsers.add(usertoAdd);
+        }
+
+        resultset.close();
+        stmt.close();
+
+        return listofUsers;
 	}
 
 

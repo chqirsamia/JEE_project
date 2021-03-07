@@ -69,7 +69,7 @@ public class UserAuthForm {
         user.setEmail(email);
 
     }
-    private User traiterUser(String email,String motDePasse , User user){
+    public User traiterUser(String email,String motDePasse , User user){
         User userConnected = new User();
         try {
             userConnected = validationUser(email, motDePasse);

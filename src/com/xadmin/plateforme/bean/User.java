@@ -86,6 +86,26 @@ public class User {
 		this.role = role;
 		
 	}
+	public User(int id, String nom, String prenom, String email, String sexe, String tel, String role) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.sexe = sexe;
+		this.tel = tel;
+		this.role = role;
+	}
+	public User(String nom, String prenom, String email, String sexe, String tel, String role) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.sexe = sexe;
+		this.tel = tel;
+		this.role = role;
+	}
+
 
 
 }

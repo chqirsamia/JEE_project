@@ -87,7 +87,7 @@ public class UserInscriptionForm {
         }
     }
 
-    private void traiterNom(String nom,User user){
+    public void traiterNom(String nom,User user){
         try {
             validationNom( nom );
         } catch ( Exception e ) {
@@ -95,7 +95,7 @@ public class UserInscriptionForm {
         }
         user.setNom( nom );
     }
-    private void traiterPrenom(String prenom,User user){
+    public void traiterPrenom(String prenom,User user){
         try {
             validationPrenom( prenom );
         } catch ( Exception e ) {
@@ -104,7 +104,7 @@ public class UserInscriptionForm {
         user.setPrenom( prenom );
     }
     
-    private void traiterEmail(String email,User user){
+    public void traiterEmail(String email,User user){
         try {
             validationEmail( email );
         } catch ( Exception e ) {
@@ -113,7 +113,7 @@ public class UserInscriptionForm {
         }
         user.setEmail(email);
     }
-    private void traiterTel(String tel,User user){
+    public void traiterTel(String tel,User user){
         try {
             validationTel( tel );
         } catch ( Exception e ) {
@@ -122,7 +122,7 @@ public class UserInscriptionForm {
         }
         user.setTel(tel);
     }
-    private void traiterMotDePasse(String motDePasse , String confirmation,User user){
+    public void traiterMotDePasse(String motDePasse , String confirmation,User user){
         try {
             validationMotDePasse( motDePasse , confirmation );
         } catch ( Exception e ) {
