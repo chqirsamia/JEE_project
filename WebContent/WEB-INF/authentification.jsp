@@ -14,9 +14,20 @@ crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
 crossorigin="anonymous">
 <!--Fichiers-->
-
-<link rel="stylesheet" href="./ressources/css/style.css">
-<link rel="stylesheet" href="./ressources/css/authentification.css">
+<style type="text/css">
+    <%@include file="../res/css/style.css" %>
+</style>
+<style type="text/css">
+    <%@include file="../res/css/authentification.css" %>
+</style>
+ <style type="text/css">
+    <%@include file="../res/css/bootstrap.min.css" %>
+</style>
+<style type="text/css">
+    <%@include file="../res/fonts/font-awesome-4.7.0/css/font-awesome.min.css" %>
+</style>
+<!-- <link rel="stylesheet" href="../res/css/style.css">
+<link rel="stylesheet" href="../res/css/authentification.css"> -->
 
 
 
@@ -29,7 +40,7 @@ crossorigin="anonymous">
 
 <c:import url="../navbar.jsp"/>
   
-  <section id="blog" class="py-3" style="background: url('./ressources/fond_authentif.jpg');background-size: cover;">
+  <section id="blog" class="py-3" style="background: url('https://nsa40.casimages.com/img/2021/03/01/210301103059138869.jpg');background-size: cover;">
    <div  style=" margin-top: -20px; margin-bottom: -20px;">
 		<div class="container-inscription">
 
@@ -46,7 +57,7 @@ crossorigin="anonymous">
                                     </span>			
                                     <!--Email-->
                                     <div  class="wrap-input100 validate-input" data-validate = "Le format valide: exemple@abc.xyz">
-                                        <input class="input100" type="text" value="<c:out value='${user.email}'/>" name="email" placeholder="Email">
+                                        <input class="input100" type="text" value="<c:out value="${param.email}"/>" name="email" placeholder="Email">
                                         <span class="symbol-input100">
                                         </span>
                                         <span style="color:red;">${form.erreurs['email']}</span>
@@ -123,6 +134,7 @@ crossorigin="anonymous">
 
 
 <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+
 <script>
     /*MOVEMENT LORS LE SITE SE LANCE*/
   
@@ -164,7 +176,6 @@ crossorigin="anonymous">
           duration:2000,
           distance:'60px'
       });
-
   </script>
   
   

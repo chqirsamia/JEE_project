@@ -1,7 +1,8 @@
 package com.junit.mockito.tests;
 
 import org.mockito.ArgumentMatcher;
-import com.xadmin.plateforme.bean.User;
+
+import com.bean.User;
 
 public class IsSameUser implements ArgumentMatcher<User> {
 
@@ -18,6 +19,5 @@ public class IsSameUser implements ArgumentMatcher<User> {
 	      System.out.println("It is not null");
 	      System.out.println("other > "+other.getEmail());
 	      System.out.println("user > "+user.getEmail());
-	      return other.getEmail().equals(user.getEmail()) &&
-	             other.getPassword().equals(user.getPassword());	}
+	      return other.getEmail().equals(user.getEmail());	}
 }

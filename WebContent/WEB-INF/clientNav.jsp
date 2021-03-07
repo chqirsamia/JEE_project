@@ -11,14 +11,13 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item"><a></a><li>
-      <li class="nav-item ">
-        
-        <a class="nav-link" style="font-size:20px" href="Acceuil.jsp">Accueil <span class="sr-only">(current)</span></a>
-      </li>
       <li class="nav-item "><a></a></li>
       <li class="nav-item ">
         <a class="nav-link" style="font-size:20px" href="infoclient">Profile <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item "><a></a></li>
+      <li class="nav-item ">
+        <a class="nav-link" style="font-size:20px" href="offres-clt">Offres <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item "><a></a></li>
       <li class="nav-item ">
@@ -31,7 +30,7 @@
       </li>
       <li class="nav-item "><a></a></li>
       <li class="nav-item ">
-        <a class="nav-link" style="font-size:20px" href="<c:url value='/authentification'/>">Déconnexion <span class="sr-only">(current)</span></a>
+        <a class="nav-link" style="font-size:20px" href="<c:url value='deconnexion'/>">Déconnexion <span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>

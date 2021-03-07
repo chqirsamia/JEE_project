@@ -8,12 +8,23 @@
     <!--Liens css pour icones fas-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="ressources/css/style.css">
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+          crossorigin="anonymous">
+   <!--   <link rel="stylesheet" href="/JEEPROJECT/WebContent/res/css/style.css" type="text/css"> -->
+    <style type="text/css">
+    <%@include file="res/css/style.css" %>
+</style>
+   <style type="text/css">
+    <%@include file="res/css/bootstrap.min.css" %>
+</style>
+<style type="text/css">
+    <%@include file="res/fonts/font-awesome-4.7.0/css/font-awesome.min.css" %>
+</style>
     <!--Fichiers-->
-    <link rel="icon" type="image/png" href="ressources/logo.png"/>
-    <link rel="stylesheet" type="text/css" href="ressources/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="ressources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="res/logo.png"/>
+ <!--   <link rel="stylesheet" type="text/css" href="res/css/TrajetSlide.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="res/css/bootstrap.min.css"> -->
+<!--	<link rel="stylesheet" type="text/css" href="res/fonts/font-awesome-4.7.0/css/font-awesome.min.css"> -->
     <title>HSA</title>
 </head>
 
@@ -24,7 +35,7 @@
 <c:import url="navbar.jsp"/>
 
 <!-- Page d'acceuil -->
-<section id="slide" style="background: url('./ressources/demenagement2.jpg');background-size: cover;">
+<section id="slide"  style="background-image: url('https://nsa40.casimages.com/img/2021/03/01/210301125329772203.jpg');background-size: cover;height:92%">
 <div class="carousel-item carousel-image-1   active">
  <div class="carousel-caption d-non d-sm-block text-center" >
 <h2 class="display-4 d-inline mylead" style="background-color: rgb(119,136,153); font-family:  Lucida Console; font-size:110px;">Bienvenue à HSA </h2> 
@@ -34,7 +45,7 @@
 </div>
 </section>
 <!--Nos services  -->
-<div class="row" id="apropos" style="margin-top: 60px;margin-bottom: 60px;">
+<div class="row" id="apropos" style="margin-top: 100px;margin-bottom: 90px;">
 
 
  <!-- Service Client -->

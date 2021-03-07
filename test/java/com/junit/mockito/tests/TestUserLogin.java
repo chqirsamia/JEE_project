@@ -1,6 +1,8 @@
 package com.junit.mockito.tests;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.sql.SQLException;
@@ -12,10 +14,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import com.xadmin.plateforme.bean.User;
-import com.xadmin.plateforme.dao.DaoFactory;
-import com.xadmin.plateforme.dao.interfaces.UserDao;
-import com.xadmin.plateforme.forms.UserAuthForm;
+
+import com.bean.User;
+import com.dao.DaoFactory;
+import com.dao.interfaces.UserDao;
+import com.form.UserAuthForm;
+
 
 class TestUserLogin {
 
@@ -28,9 +32,6 @@ class TestUserLogin {
 		daofactory = Mockito.mock(DaoFactory.class);
 		userdao = Mockito.mock(UserDao.class);
 		userauth = new UserAuthForm(userdao);
-		System.out.println(daofactory);
-		System.out.println(userdao);
-		System.out.println(userauth);
 	}
 
 	@AfterAll
@@ -52,9 +53,9 @@ class TestUserLogin {
 	void testAuthWithValidCredentials() {
 		User user = new User();
 		user.setEmail("salma@gmail.com");
-		user.setPassword("salma");
+
 		
-		User userset = new User("sellami", "salma", "salma@gmail.com", "F", "0673829292", "C");
+		User userset = new User("sellami", "salma", "salma@gmail.com", "F", "0673829292", "25d4824df60545545311648b993309da936607a8fe537f5dc10b3fb38da31aab","C");
 		try {
 			Mockito.when(userdao.findSpecificUser(Mockito.argThat(new IsSameUser(user)))).thenReturn(userset);
 		} catch (SQLException e) {
@@ -63,15 +64,9 @@ class TestUserLogin {
 		}
 		
 		User userLogin = new User();
-		userLogin.setEmail("salma@gmail.com");
-		userLogin.setPassword("salma");
 
-		User userretrieved = null;
-		try {
-			userretrieved = userdao.findSpecificUser(userLogin);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+
+		User userretrieved = userauth.traiterUser("salma@gmail.com", "salma", userLogin);
 		
 		assertThat(userretrieved).isNotNull();
 
@@ -83,34 +78,19 @@ class TestUserLogin {
 	@Test
 	void testAuthWithInvalidCredentials() {
 		User user = new User();
-		user.setEmail("salma@gmail.com");
-		user.setPassword("salma");
+		user.setEmail("rayan@gmail.com");
 		
-		User userset = new User("sellami", "salma", "salma@gmail.com", "F", "0673829292", "C");
 		try {
-			//Mockito.when(userdao.findSpecificUser(user)).thenReturn(userset);
-			Mockito.when(userdao.findSpecificUser(Mockito.argThat(new IsSameUser(user)))).thenReturn(userset);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			fail("Error unfound account");
-		}
-		
-		User userLogin = new User();
-		userLogin.setEmail("sara@gmail.com");
-		userLogin.setPassword("sara");
-		
-		User userretrieved = null;
-		try {
-			userretrieved = userdao.findSpecificUser(userLogin);
+			Mockito.when(userdao.findSpecificUser(Mockito.argThat(new IsSameUser(user)))).thenReturn(null);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		assertThat(userretrieved).isNotNull();
+		User userLogin = new User();		
 
-		assertThat(userretrieved.getTel()).isEqualTo("0673829292");
-		assertThat(userretrieved.getNom()).isEqualTo("sellami");
-		assertThat(userretrieved.getPrenom()).isEqualTo("salma");
+//		assertThrows(Exception.class, ()->userauth.traiterUser("rayan@gmail.com", "rayan", userLogin));
+//	    assertEquals("Utilisateur introuvable. Merci de réessayer", exception.getMessage());
+//	
 	}
 
 }

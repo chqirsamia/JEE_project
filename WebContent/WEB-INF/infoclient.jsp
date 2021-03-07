@@ -15,12 +15,21 @@ crossorigin="anonymous">
 crossorigin="anonymous">
 <!--Fichiers-->
 
-<link rel="stylesheet" href="./ressources/css/style.css">
-<link rel="stylesheet" href="./ressources/css/authentification.css">
+<style type="text/css">
+    <%@include file="../res/css/style.css" %>
+</style>
+<style type="text/css">
+    <%@include file="../res/css/authentification.css" %>
+</style>
+   <style type="text/css">
+    <%@include file="../res/css/bootstrap.min.css" %>
+</style>
+<!--  <link rel="stylesheet" href="http://localhost:8088/Plateforme/style.css"> -->
+<!-- <link rel="stylesheet" href="./ressources/css/authentification.css"> -->
 
 
 
-  <title>Connexion</title>
+  <title>Profile</title>
   <style type="text/css">
   	body {
    		background: #E0EEEE
@@ -61,8 +70,8 @@ crossorigin="anonymous">
 <body>
 
 <!-- Menu -->
- <c:if test = "${empty sessionScope.userId}"> <c:redirect url="authentification"></c:redirect></c:if>
 <c:import url="clientNav.jsp"/>
+ <c:if test = "${empty sessionScope.userId}"> <c:redirect url="authentification"></c:redirect></c:if>
 
 <!-- Modal Message -->
 <div class="modal fade" id="modalMessage" tabindex="-1" role="dialog" aria-labelledby="modalMessageLabel" aria-hidden="true">
@@ -76,8 +85,8 @@ crossorigin="anonymous">
       </div>
       <div class="modal-body border-0">
       	<div class="text-center">
-      		<i class="fas fa-${isEdited.icon} fa-5x"></i>
-      		<h5><c:out value="${isEdited.msg}"></c:out></h5>
+      	<i class="fas fa-${isEdited.icon} fa-5x"></i>
+      		<h5 style="margin-top:10px"><c:out value="${isEdited.msg}"></c:out></h5>
       	</div>
        
       </div>
@@ -88,27 +97,24 @@ crossorigin="anonymous">
   </div>
 </div>
 <!-- Modal Message -->
-
 <div class="container py-5">
-<div class="row text-center mb-5">
-        <div class="col-lg-7 mx-auto">
-            <h1>Mes informations personnelles</h1>
-        </div>
-</div>
+    <div class="row text-center mb-5" style="height:35px;margin-top:40px;">
+                                    <span class="inscription-form-title" style="margin-left:200px;font-size:60px;text-align:center;height:77px;background-color: rgb(176,224,230); ">
+                                        Mes informations personnelles
+                                    </span>
+                                    </div>	
 <form action="infoclient" method="post">
 
-<div class="container rounded bg-white mt-5">
+<div class="container rounded bg-white mt-5" style="margin-top:-5px!important">
     <div class="row">
         <div class="col-md-4 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="https://i.imgur.com/0eg0aG0.jpg" width="90"><span class="font-weight-bold"><c:out value="${client.nom}"/> <c:out value="${sessionScope.userSession.prenom}"/></span><span class="text-black-50">Client #<c:out value="${client.id}"/></span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><span class="font-weight-bold" style="margin-top:100px!important;font-size:2.5em;text-transform : uppercase;"><c:out value="${client.nom}"/> <c:out value="${client.prenom}"/></span><span class="text-black-50">Client #<c:out value="${client.id}"/></span></div>
         </div>
         <div class="col-md-8">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
-                        <h6>Back to home</h6>
-                    </div>
-                    <h6 class="text-right">Edit Profile</h6>
+                   <h6 class="text-left"></h6>
+                    <h6 class="text-right" style="font-weight:bold;margin-top:-15px">Edit Profile</h6>
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-6"><input type="text" class="form-control" placeholder="First name" name="nom" value="<c:out value="${client.nom}"/>"></div>
@@ -127,8 +133,8 @@ crossorigin="anonymous">
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"><input type="text" class="form-control" placeholder="Password" name="pw"></div>
-                    <div class="col-md-6"><input type="text" class="form-control" placeholder="Confirmer mot de passe" name="cpw"></div>
+                    <div class="col-md-6"><input type="password" class="form-control" placeholder="Password" name="pw"></div>
+                    <div class="col-md-6"><input type="password" class="form-control" placeholder="Confirmer mot de passe" name="cpw"></div>
                 </div>
                 <div class="mt-5 text-right"><button class="btn btn-dark profile-button" type="submit">Save Profile</button></div>
             </div>

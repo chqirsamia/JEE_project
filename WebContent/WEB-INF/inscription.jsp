@@ -14,42 +14,35 @@ crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
 crossorigin="anonymous">
 <!--Fichiers-->
-<link rel="stylesheet" href="./ressources/css/style.css">
-<link rel="stylesheet" href="./ressources/css/inscription.css">
-<link rel="stylesheet" href="./ressources/css/validation.css">
+<style type="text/css">
+    <%@include file="../res/css/style.css" %>
+</style>
+<style type="text/css">
+    <%@include file="../res/css/inscription.css" %>
+</style>
+ <style type="text/css">
+    <%@include file="../res/css/validation.css" %>
+</style>
+ <style type="text/css">
+    <%@include file="../res/css/bootstrap.min.css" %>
+</style>
+<style type="text/css">
+    <%@include file="../res/fonts/font-awesome-4.7.0/css/font-awesome.min.css" %>
+</style>
+
+<!--  <link rel="stylesheet" href="./ressources/css/style.css">  -->
+<!-- <link rel="stylesheet" href="./ressources/css/inscription.css">  -->
+<!-- <link rel="stylesheet" href="./ressources/css/validation.css">  -->
   <title>Inscription</title>
 </head>
 
 <body>
 
 <!-- Menu -->
-<!-- Modal Message -->
-<div class="modal fade" id="modalMessage" tabindex="-1" role="dialog" aria-labelledby="modalMessageLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Création d'un nouveau compte</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body border-0">
-      	<div class="text-center">
-      		<i class="fas fa-${isCreated.icon} fa-5x"></i>
-      		<h5><c:out value="${isCreated.msg}"></c:out></h5>
-      	</div>
-       
-      </div>
-      <div class="modal-footer border-0">
-        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal Message -->
+
 <c:import url="/navbar.jsp"/>
 
-  <section id="blog" class="py-3" style="background: url('./ressources/fond_authentif.jpg');background-size: cover;">
+  <section id="blog" class="py-3" style="background: url('https://nsa40.casimages.com/img/2021/03/01/210301103059138869.jpg');background-size: cover;">
 		<div class="container-inscription" style="margin-top: -20px; margin-bottom: -20px;width:100%"  >
 
 			<div class="wrap-inscription insc" style="height:700px;">
@@ -80,7 +73,7 @@ crossorigin="anonymous">
                    
 					<!--Email-->
 					<div class="wrap-input100 validate-input" data-validate = "Le format valide: exemple@abc.xyz">
-						<input class="input100" type="email" value="<c:out value='${user.email}'/>" name="email" placeholder="Email">
+						<input class="input100" type="text" value="<c:out value='${user.email}'/>" name="email" placeholder="Email">
 						
                         <span style="color:red">${form.erreurs['email']}</span>
 					</div>
@@ -106,7 +99,7 @@ crossorigin="anonymous">
                     </div>
                    <!--MOT de PASSE-->
                     <div class="wrap-input100 validate-input" data-validate = "Champ obligatoire">
-						<input class="input100" type="password" value="<c:out value='${user.password}'/>" name="motdepasse" placeholder="Mot de passe">
+						<input class="input100" type="password" name="motdepasse" placeholder="Mot de passe">
 
                         <span style="color:red">${form.erreurs['motdepasse']}</span>
 					</div>
@@ -227,15 +220,7 @@ crossorigin="anonymous">
     
   </script>
   
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-<c:if test="${!empty isCreated}">
-	<script type="text/javascript">
-		$(window).on('load', function() {
-			$('#modalMessage').modal('show');
-		});
-	</script>
-</c:if>
+  
   </body>
   </html>
   

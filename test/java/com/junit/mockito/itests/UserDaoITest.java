@@ -3,10 +3,7 @@ package com.junit.mockito.itests;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -14,14 +11,14 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.xadmin.plateforme.bean.User;
-import com.xadmin.plateforme.dao.DaoFactory;
-import com.xadmin.plateforme.dao.interfaces.UserDao;
-import com.xadmin.plateforme.forms.UserAuthForm;
-import com.xadmin.plateforme.forms.UserInscriptionForm;
+import com.bean.Offre;
+import com.bean.User;
+import com.dao.DaoFactory;
+import com.dao.interfaces.UserDao;
+import com.form.UserInscriptionForm;
 
 class UserDaoITest {
-
+	static int idinserted;
 	private static DaoFactory daofactory;
 	private UserDao userdao;
 	@BeforeAll
@@ -45,18 +42,17 @@ class UserDaoITest {
 	@Test
 	void insertUserITest() {
 	//ARRANGE
-		int idinserted = 0;
+		idinserted = 0;
 		User user = new User();
-		User userRetrieved = null;
 		UserInscriptionForm form = new UserInscriptionForm(userdao);
 		//User info
-		form.traiterPrenom("Salma", user);
-		form.traiterNom("Louadghiri", user);
-		form.traiterMotDePasse("salma", "salma", user);
-		form.traiterTel("0672829303", user);
+		form.traiterPrenom("Lina", user);
+		form.traiterNom("Lamyaghri", user);
+		form.traiterMotDePasse("lina", "lina", user);
+		form.traiterTel("0638292202", user);
 		user.setSexe("F");
 		user.setRole("C");
-		user.setEmail("salma@gmail.com");
+		user.setEmail("lina@gmail.com");
 		
 	//ACT
 		//Insertion fail
@@ -66,23 +62,42 @@ class UserDaoITest {
 			e.printStackTrace();
 			fail("Test failed due to insertion error !");
 		}
-		//Retrieving fail
-		try {
-			userRetrieved = userdao.findSpecificUser(idinserted);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			fail("Test failed due to listing error !");
-		}
-	//ASSERT	
-		assertThat(idinserted).isEqualTo(userRetrieved.getId());
-		assertThat(user.getNom()).isEqualTo(userRetrieved.getNom());
-		assertThat(user.getPassword()).isEqualTo(userRetrieved.getPassword());
-		assertThat(user.getPrenom()).isEqualTo(userRetrieved.getPrenom());
-		assertThat(user.getEmail()).isEqualTo(userRetrieved.getEmail());
-		assertThat(user.getRole()).isEqualTo(userRetrieved.getRole());
-		assertThat(user.getSexe()).isEqualTo(userRetrieved.getSexe());
+		
+		assertThat(idinserted).isNotEqualTo(-1);
 	}
 	
 	
+	@Test
+	void listUserITest() {
+		//Retrieving fail
+		User userRetrieved = null;
 
+			try {
+				userRetrieved = userdao.findSpecificUser(idinserted);
+			} catch (SQLException e) {
+				e.printStackTrace();
+				fail("Test failed due to listing error !");
+			}
+		//ASSERT	
+			assertThat(userRetrieved.getId()).isEqualTo(idinserted);
+			assertThat(userRetrieved.getNom()).isEqualToIgnoringCase("lamyaghri");
+			assertThat(userRetrieved.getPrenom()).isEqualToIgnoringCase("lina");
+			assertThat(userRetrieved.getEmail()).isEqualToIgnoringCase("lina@gmail.com");
+			assertThat(userRetrieved.getTel()).isEqualToIgnoringCase("0638292202");	
+	}
+	
+	@Test
+	void DeleteUserITest() {
+		
+		try {
+			boolean isdeleted = userdao.deleteUser(idinserted);
+			//Assert
+			assertThat(isdeleted).isTrue();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			fail("Delete failed");
+		}
+	}
+	
 }
