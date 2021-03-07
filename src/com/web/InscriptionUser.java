@@ -67,6 +67,7 @@ public class InscriptionUser extends HttpServlet {
         } else {
         	map.put("msg", "Un probl_me est survenu !! Veuillez rééssayer ultérieurement.");
             map.put("icon", "exclamation-triangle");
+            this.getServletContext().getRequestDispatcher(VUE_INSCRIPTION).forward(req, resp);
         }
         req.setAttribute("isCreated", map);
         this.getServletContext().getRequestDispatcher(VUE_APRES_INSCRIPTION).forward(req, resp);
